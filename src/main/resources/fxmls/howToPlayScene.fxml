@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0"
+            prefWidth="920.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="escape.code.controllers.HowToPlayController">
+    <children>
+        <ImageView fitHeight="680.0" fitWidth="957.0" layoutX="-33.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../pictures/LogInScreen.png"/>
+            </image>
+        </ImageView>
+        <Label alignment="CENTER" layoutX="201.0" layoutY="31.0" prefHeight="87.0" prefWidth="518.0"
+               text="★★ How to play ★★" textFill="#cddc94" textOverrun="CENTER_WORD_ELLIPSIS">
+            <font>
+                <Font size="48.0"/>
+            </font>
+        </Label>
+        <VBox alignment="CENTER_LEFT" layoutY="112.0" prefHeight="399.0" prefWidth="920.0" spacing="40.0">
+            <children>
+                <Label alignment="CENTER" prefHeight="45.0" prefWidth="734.0"
+                       text="Unlock the door to escape and get to the next room." textFill="#cddc94">
+                    <font>
+                        <Font size="30.0"/>
+                    </font>
+                </Label>
+                <Label prefHeight="43.0" prefWidth="860.0"
+                       text="  You can pick up certain items and use them from your inventory." textFill="#cddc94">
+                    <font>
+                        <Font size="29.0"/>
+                    </font>
+                </Label>
+                <Label prefHeight="43.0" prefWidth="699.0" text="  To do that, use clues and solve it puzzles."
+                       textFill="#cddc94">
+                    <font>
+                        <Font size="29.0"/>
+                    </font>
+                </Label>
+                <Label prefHeight="43.0" prefWidth="699.0" text="  You can move using left, right, up and down buttons."
+                       textFill="#cddc94">
+                    <font>
+                        <Font size="29.0"/>
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+        <Button fx:id="backToGame" layoutX="113.0" layoutY="553.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#backToMenu"
+                prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;" text="Back to Menu">
+            <font>
+                <Font size="24.0"/>
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

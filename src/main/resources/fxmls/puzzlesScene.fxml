@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escape.code.controllers.PuzzleController">
+   <children>
+      <Button fx:id="hintButton" alignment="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#giveHint" prefHeight="41.0" prefWidth="38.0" style="-fx-background-radius: 100;">
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../pictures/Lamb.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fitHeight="190.0" fitWidth="170.0" layoutX="14.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/QuestionMark.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="puzzleImage" fitHeight="294.0" fitWidth="748.0" layoutX="22.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="hintText" layoutX="74.0" layoutY="14.0" prefHeight="41.0" prefWidth="712.0" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="description" layoutX="206.0" layoutY="396.0" prefHeight="85.0" prefWidth="539.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userAnswer" layoutX="206.0" layoutY="491.0" prefHeight="38.0" prefWidth="477.0">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </TextField>
+      <Label fx:id="nextClue" layoutX="206.0" layoutY="540.0" prefHeight="43.0" prefWidth="553.0" visible="false" />
+      <Button fx:id="answerButton" layoutX="711.0" layoutY="495.0" mnemonicParsing="false" onAction="#checkAnswer" text="Answer">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>

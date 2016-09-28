@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<?import escape.code.core.ResizableCanvas?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="594.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/RoomThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="72.0" fitWidth="1024.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/BarOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="KEY" fitHeight="41.0" fitWidth="41.0" layoutX="118.0" layoutY="554.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../pictures/OneCount.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="BOOK" fitHeight="41.0" fitWidth="72.0" layoutX="248.0" layoutY="555.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../pictures/OneCount.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="microscope" arcHeight="5.0" arcWidth="5.0" fill="#dbdbdb00" height="88.0" layoutX="391.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="282.0" visible="false"/>
+      <Rectangle fx:id="tablet" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="41.0" layoutX="283.0" layoutY="353.0" stroke="BLACK" strokeType="INSIDE" width="48.0" visible="false"/>
+      <Rectangle fx:id="testing" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="68.0" layoutX="706.0" layoutY="90.0" stroke="BLACK" strokeType="INSIDE" width="121.0" visible="false"/>
+      <Rectangle fx:id="exit" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="121.0" layoutX="699.0" layoutY="325.0" stroke="BLACK" strokeType="INSIDE" width="41.0" visible="false"/>
+      <Rectangle fx:id="tableRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="59.0" layoutX="107.0" layoutY="363.0" stroke="BLACK" strokeType="INSIDE" width="220.0" visible="false"/>
+      <Rectangle fx:id="doorRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="121.0" layoutX="710.0" layoutY="324.0" stroke="BLACK" strokeType="INSIDE" width="121.0" visible="false"/>
+      <Rectangle fx:id="microscopeRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="88.0" layoutX="396.0" layoutY="93.0" stroke="BLACK" strokeType="INSIDE" width="272.0" visible="false"/>
+      <Rectangle fx:id="deskRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="59.0" layoutX="707.0" layoutY="85.0" stroke="BLACK" strokeType="INSIDE" width="166.0" visible="false"/>
+      <Rectangle fx:id="lockerRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="59.0" layoutX="175.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="108.0" visible="false"/>
+      <ImageView fx:id="imagePlayer" fitHeight="50.0" fitWidth="70.0" layoutX="497.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/EmoticonLeft.png" />
+         </image>
+      </ImageView>
+      <ResizableCanvas fx:id="mainCanvas" height="427.0" layoutX="157.0" layoutY="93.0" width="723.0" />
+   </children>
+</AnchorPane>

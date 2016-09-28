@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escape.code.controllers.GameFinishedController">
+   <children>
+      <ImageView fitHeight="677.0" fitWidth="947.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../pictures/GameFinished.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="exitButton" layoutX="139.0" layoutY="528.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="70.0" prefWidth="195.0" style="-fx-background-color: #e5f495;" text="EXIT">
+         <font>
+            <Font size="39.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
