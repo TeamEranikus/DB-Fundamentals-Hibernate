@@ -46,7 +46,7 @@ public class MenuController {
      * Exits the game
      */
     public void onQuitClicked(ActionEvent event) {
-        this.currentStage = (Stage) quitButton.getScene().getWindow();
+        this.currentStage = (Stage) this.quitButton.getScene().getWindow();
         this.currentStage.close();
         System.exit(0);
     }

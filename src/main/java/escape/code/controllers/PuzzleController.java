@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
  * Controls fxml file for current puzzle
  */
 public class PuzzleController implements Initializable {
+
     private static final double IMAGE_RESIZE_COEFFICIENT = 2D;
 
     @FXML
@@ -116,7 +117,6 @@ public class PuzzleController implements Initializable {
 
             this.puzzleImage.setX((this.puzzleImage.getFitWidth() - width) / IMAGE_RESIZE_COEFFICIENT);
             this.puzzleImage.setY((this.puzzleImage.getFitHeight() - height) / IMAGE_RESIZE_COEFFICIENT);
-
         }
     }
 }

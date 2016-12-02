@@ -1,7 +1,9 @@
-package escape.code.daos.puzzleDAO;
+package escape.code.daos.impls;
 
 import com.google.inject.Inject;
+import escape.code.daos.PuzzleDao;
 import escape.code.models.Puzzle;
+
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -15,21 +17,23 @@ public class PuzzleDaoImpl implements PuzzleDao {
 
     /**
      * Gets all puzzles in current level
+     *
      * @param level - current game level
      * @return - current level puzzle list
      */
     @Override
     @SuppressWarnings("unchecked")
     public List<Puzzle> getAllByLevel(int level) {
-      return this.entityManager
+        return this.entityManager
                 .createQuery("SELECT puzzle FROM Puzzle AS puzzle WHERE puzzle.level=:level")
-                .setParameter("level",level)
+                .setParameter("level", level)
                 .getResultList();
     }
 
     /**
-     * Creates current puzzle
-     * @param puzzle
+     * Persists current Puzzle in DB
+     *
+     * @param puzzle Puzzle to be persisted in DB
      */
     @Override
     public void createPuzzle(Puzzle puzzle) {
@@ -40,6 +44,7 @@ public class PuzzleDaoImpl implements PuzzleDao {
 
     /**
      * Gets puzzle from database by given id
+     *
      * @param id - current puzzle id
      * @return - corresponding puzzle
      */
@@ -48,7 +53,7 @@ public class PuzzleDaoImpl implements PuzzleDao {
     public Puzzle getOneById(long id) {
         List<Puzzle> allPuzzle = this.entityManager
                 .createQuery("SELECT puzzle FROM Puzzle AS puzzle WHERE puzzle.id=:id")
-                .setParameter("id",id)
+                .setParameter("id", id)
                 .getResultList();
         return allPuzzle.get(0);
     }

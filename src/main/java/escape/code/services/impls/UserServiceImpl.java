@@ -1,15 +1,14 @@
-package escape.code.services.userService;
+package escape.code.services.impls;
 
 import com.google.inject.Inject;
-import escape.code.daos.userDAO.UserDao;
+import escape.code.daos.UserDao;
 import escape.code.models.PuzzleRectangle;
 import escape.code.models.User;
-import escape.code.services.puzzleRectangleService.PuzzleRectangleService;
+import escape.code.services.PuzzleRectangleService;
+import escape.code.services.UserService;
 
-/**
- * Keeps logic for user database and user DAO communication
- */
 public class UserServiceImpl implements UserService {
+
     private static final int DEFAULT_START_LEVEL = 0;
 
     private UserDao userDao;
@@ -38,8 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(String username, String password){
-        User user = this.userDao.getLogedUser(username,password);
-        return user;
+    public User getUser(String username, String password) {
+        return this.userDao.getLogedUser(username, password);
     }
 }

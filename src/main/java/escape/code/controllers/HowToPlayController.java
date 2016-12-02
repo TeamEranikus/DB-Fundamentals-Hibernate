@@ -24,6 +24,7 @@ public class HowToPlayController {
 
     /**
      * Returns the scene to the main menu
+     *
      * @param event
      * @throws IOException
      */

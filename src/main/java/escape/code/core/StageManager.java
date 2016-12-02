@@ -19,12 +19,13 @@ public class StageManager {
 
     /**
      * Loads next scene to primary stage by given stage fxml path as string
+     *
      * @param currentStage - game current stage
-     * @param fxmlPath - next scene fxml path
+     * @param fxmlPath     - next scene fxml path
      * @return fxml loader with next scene game objects
      */
     public FXMLLoader loadSceneToPrimaryStage(Stage currentStage, String fxmlPath) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
+        FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource(fxmlPath));
         try {
             Region region = fxmlLoader.load();
             double origW = Constants.FULL_HD_WIDTH;

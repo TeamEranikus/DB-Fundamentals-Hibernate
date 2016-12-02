@@ -18,6 +18,7 @@ public class User implements Serializable{
     private PuzzleRectangle puzzleRectangle;
 
     public User(){
+        super();
     }
 
     @Id
@@ -31,6 +32,7 @@ public class User implements Serializable{
         this.id = id;
     }
 
+    @Column(name = "name", nullable = false)
     public String getName() {
         return this.name;
     }
@@ -39,6 +41,7 @@ public class User implements Serializable{
         this.name = name;
     }
 
+    @Column(name = "password", nullable = false)
     public String getPassword() {
         return this.password;
     }
@@ -47,6 +50,7 @@ public class User implements Serializable{
         this.password = password;
     }
 
+    @Column(name = "level", nullable = false)
     public int getLevel() {
         return this.level;
     }

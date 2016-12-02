@@ -13,12 +13,13 @@ public class AppRun extends Application {
 
     /**
      * Escape code start point
+     *
      * @param primaryStage main stage for the game
      */
     @Override
     public void start(Stage primaryStage) {
 
-//        //Todo: when you first build the program change hibernateUnils line 55 form update to create, then comment from here
+//        //Todo: when you first build the program change hibernateUtils line 55 form update to create, then comment from here
 //        String[][] taskParams = {
 //                {"-What the following code will print?", "piano", "Do you really need the numbers?", "What could it be??", "/pictures/ComputerTaskWhite.png", "0", "NONE"},
 //                {"-One piano button is stuck!", "13", "How will you EXit?", "You are one step away from the exit.", "/pictures/PianoTask.jpg", "0", "BOOK"},
@@ -61,7 +62,8 @@ public class AppRun extends Application {
 
     /**
      * Main entry point
-     * @param args
+     *
+     * @param args arguments for the method
      */
     public static void main(String[] args) {
         launch(args);

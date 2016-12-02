@@ -8,6 +8,7 @@ import java.util.Arrays;
  * Levels available in the game
  */
 public enum Level {
+
     ZERO(0, Constants.DEMO_LEVEL_FXML_PATH),
     ONE(1, Constants.FIRST_LEVEL_FXML_PATH),
     TWO(2, Constants.SECOND_LEVEL_FXML_PATH);

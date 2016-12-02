@@ -5,7 +5,7 @@ import escape.code.core.engine.Engine;
 import escape.code.core.engine.EngineImpl;
 import escape.code.enums.Level;
 import escape.code.models.User;
-import escape.code.services.userService.UserService;
+import escape.code.services.UserService;
 import escape.code.utils.Constants;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +19,7 @@ import java.io.File;
  * Keeps the main logic for running the game
  */
 public class Game {
+
     private static final int LEVEL_INCREMENTER = 1;
     private static final int NUMBER_OF_LEVELS = Level.values().length;
 
@@ -37,12 +38,13 @@ public class Game {
 
     /**
      * Initialize current stage
+     *
      * @param stage - stage to be initialized
      */
-     public static void initialize(Stage stage){
-         currentStage = stage;
-         login();
-     }
+    public static void initialize(Stage stage) {
+        currentStage = stage;
+        login();
+    }
 
     /**
      * Runs the game:
@@ -62,7 +64,8 @@ public class Game {
                 } catch (IllegalStateException e) {
                     mediaPlayer.stop();
                     user.setLevel((user.getLevel() + LEVEL_INCREMENTER) % NUMBER_OF_LEVELS);
-                    fxmlLoader = stageManager.loadSceneToPrimaryStage(currentStage, Level.getByNum(user.getLevel()).getPath());
+                    fxmlLoader = stageManager.loadSceneToPrimaryStage(currentStage, Level.getByNum(user.getLevel())
+                            .getPath());
                     userService.updateUser(user);
                     engine = new EngineImpl(fxmlLoader, user, userService, stageManager);
                     mediaPlayer.play();
@@ -77,6 +80,7 @@ public class Game {
 
     /**
      * Set current logged in user
+     *
      * @param currentUser - current logged in user
      */
     public static void setUser(User currentUser) {

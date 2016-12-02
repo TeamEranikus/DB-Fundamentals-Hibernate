@@ -1,15 +1,15 @@
-package escape.code.services.puzzleService;
+package escape.code.services.impls;
 
 import com.google.inject.Inject;
-import escape.code.daos.puzzleDAO.PuzzleDao;
+import escape.code.daos.PuzzleDao;
 import escape.code.enums.Item;
 import escape.code.models.Puzzle;
+import escape.code.services.PuzzleService;
+
 import java.util.List;
 
-/**
- * Keeps logic for puzzle database and puzzle DAO communication
- */
 public class PuzzleServiceImpl implements PuzzleService {
+
     private static final int PUZZLE_QUESTION_INDEX = 0;
     private static final int PUZZLE_CORRECT_ANSWER_INDEX = 1;
     private static final int PUZZLE_HINT_INDEX = 2;
@@ -21,7 +21,7 @@ public class PuzzleServiceImpl implements PuzzleService {
     private PuzzleDao puzzleDao;
 
     @Inject
-    public PuzzleServiceImpl(PuzzleDao puzzleDao){
+    public PuzzleServiceImpl(PuzzleDao puzzleDao) {
         this.puzzleDao = puzzleDao;
     }
 

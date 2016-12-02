@@ -3,7 +3,7 @@ package escape.code.controllers;
 import com.google.inject.Inject;
 import escape.code.core.Game;
 import escape.code.models.User;
-import escape.code.services.userService.UserService;
+import escape.code.services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -29,6 +29,7 @@ public class LoginController {
 
     /**
      * Logged in the current user by given username and password
+     *
      * @param actionEvent
      */
     public void login(ActionEvent actionEvent) {
@@ -46,6 +47,7 @@ public class LoginController {
 
     /**
      * Register the new user by given username and password
+     *
      * @param actionEvent
      */
     public void register(ActionEvent actionEvent) {
@@ -62,6 +64,7 @@ public class LoginController {
 
     /**
      * Validates user input
+     *
      * @param username - tipped username
      * @param password - tipped password
      * @throws IllegalArgumentException when tipped input is empty or white space

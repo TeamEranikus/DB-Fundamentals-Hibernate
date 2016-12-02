@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escape.code.controllers.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escape.code.controllers.LoginController">
    <children>
       <ImageView fitHeight="680.0" fitWidth="954.0" layoutX="-33.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,12 +32,12 @@
          </font></TextField>
       <VBox alignment="CENTER" layoutX="92.0" layoutY="436.0" prefHeight="194.0" prefWidth="267.0" spacing="30.0">
          <children>
-            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e5f495;" text="Log in">
+            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e5f495;" text="Login">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="registerButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#register" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e5f495;" text="Sign in">
+            <Button fx:id="registerButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#register" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e5f495;" text="Register">
                <font>
                   <Font size="24.0" />
                </font>

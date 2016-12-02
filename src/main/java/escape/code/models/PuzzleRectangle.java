@@ -16,6 +16,7 @@ public class PuzzleRectangle {
     private int level;
 
     public PuzzleRectangle() {
+        super();
     }
 
     @Id

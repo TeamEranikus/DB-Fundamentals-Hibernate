@@ -10,8 +10,8 @@ import escape.code.models.PuzzleRectangle;
 import escape.code.models.User;
 import escape.code.models.sprite.Sprite;
 import escape.code.models.sprite.SpriteImpl;
-import escape.code.services.puzzleRectangleService.PuzzleRectangleService;
-import escape.code.services.userService.UserService;
+import escape.code.services.PuzzleRectangleService;
+import escape.code.services.UserService;
 import escape.code.utils.Constants;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXMLLoader;
@@ -59,9 +59,10 @@ public class EngineImpl implements Engine {
 
     /**
      * Set up the current scene engine
-     * @param loader - scene fxml loader
-     * @param user - current logged in user
-     * @param userService - service responsible for connection with user database
+     *
+     * @param loader       - scene fxml loader
+     * @param user         - current logged in user
+     * @param userService  - service responsible for connection with user database
      * @param stageManager - manager for the current stage
      */
     public EngineImpl(FXMLLoader loader, User user, UserService userService, StageManager stageManager) {
@@ -75,10 +76,11 @@ public class EngineImpl implements Engine {
 
     /**
      * Set up current scene game play
+     *
      * @throws IllegalStateException
      */
     public void play() throws IllegalStateException {
-        this.sprite.updateSpriteCoordinates(this.keys, this.rectCollision);
+        this.sprite.updateCoordinates(this.keys, this.rectCollision);
         boolean hasCollision = this.sprite.checkForCol(this.currentPuzzleRectangle);
         Puzzle currentPuzzle = this.user.getPuzzleRectangle().getPuzzle();
         if (hasCollision) {
@@ -92,10 +94,10 @@ public class EngineImpl implements Engine {
             long puzzleRectangleId = this.user.getPuzzleRectangle().getId();
             PuzzleRectangle puzzle = puzzleRectangleService.getOneById(puzzleRectangleId + PUZZLE_INCREMENTER);
             this.user.setPuzzleRectangle(puzzle);
-            this.currentPuzzleRectangle = getCurrentPuzzleRectangle();
+            this.currentPuzzleRectangle = this.getCurrentPuzzleRectangle();
             this.userService.updateUser(this.user);
             this.hasToSetPuzzle = true;
-            setItem(currentPuzzle.getItem());
+            this.setItem(currentPuzzle.getItem());
         }
     }
 
@@ -104,7 +106,7 @@ public class EngineImpl implements Engine {
         this.rectCollision = new ArrayList<>();
         Scene scene = ((Pane) this.loader.getRoot()).getScene();
         this.currentLoadedStage = (Stage) (scene.getWindow());
-        this.objectsInCurrentScene = loader.getNamespace();
+        this.objectsInCurrentScene = this.loader.getNamespace();
         ImageView playerImage = (ImageView) this.objectsInCurrentScene.get(IMAGE_PLAYER_ID);
         ResizableCanvas canvas = (ResizableCanvas) this.objectsInCurrentScene.get(CANVAS_ID);
         this.sprite = new SpriteImpl(playerImage, canvas);
@@ -125,10 +127,10 @@ public class EngineImpl implements Engine {
                 Puzzle currentPuzzle = this.user.getPuzzleRectangle().getPuzzle();
                 PuzzleController.setPuzzle(currentPuzzle);
             }
-            stageManager.loadSceneToPrimaryStage(new Stage(), Constants.PUZZLE_FXML_PATH);
+            this.stageManager.loadSceneToPrimaryStage(new Stage(), Constants.PUZZLE_FXML_PATH);
         } else if (currentPuzzleRectangleId.contains(END_GAME_RECTANGLE_ID)) {
             this.userService.updateUser(this.user);
-            stageManager.loadSceneToPrimaryStage(this.currentLoadedStage, Constants.GAME_FINISHED_FXML_PATH);
+            this.stageManager.loadSceneToPrimaryStage(this.currentLoadedStage, Constants.GAME_FINISHED_FXML_PATH);
         } else {
             this.currentLoadedStage.close();
             PuzzleRectangle puzzle = this.user.getPuzzleRectangle();
@@ -149,6 +151,7 @@ public class EngineImpl implements Engine {
 
     /**
      * Gets current collision rectangle
+     *
      * @return collision rectangle for the current puzzle
      */
     private Rectangle getCurrentPuzzleRectangle() {
@@ -165,14 +168,14 @@ public class EngineImpl implements Engine {
         }
     }
 
-    private void updateItems(){
+    private void updateItems() {
         List<PuzzleRectangle> allRectanglesForCurrentLevel =
                 puzzleRectangleService.getAllByLevel(this.user.getLevel());
         allRectanglesForCurrentLevel.stream()
                 .filter(rectangle -> rectangle.getId() < this.user.getPuzzleRectangle().getId())
                 .forEach(rectangle -> {
-            Item item = rectangle.getPuzzle().getItem();
-            this.setItem(item);
-        });
+                    Item item = rectangle.getPuzzle().getItem();
+                    this.setItem(item);
+                });
     }
 }

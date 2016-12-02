@@ -9,18 +9,18 @@ import escape.code.controllers.MenuController;
 import escape.code.core.engine.EngineImpl;
 import escape.code.core.Game;
 import escape.code.core.StageManager;
-import escape.code.daos.puzzleDAO.PuzzleDao;
-import escape.code.daos.puzzleDAO.PuzzleDaoImpl;
-import escape.code.daos.puzzleRectangleDAO.PuzzleRectangleDao;
-import escape.code.daos.puzzleRectangleDAO.PuzzleRectangleDaoImpl;
-import escape.code.daos.userDAO.UserDao;
-import escape.code.daos.userDAO.UserDaoImpl;
-import escape.code.services.puzzleRectangleService.PuzzleRectangleService;
-import escape.code.services.puzzleRectangleService.PuzzleRectangleServiceImpl;
-import escape.code.services.puzzleService.PuzzleService;
-import escape.code.services.puzzleService.PuzzleServiceImpl;
-import escape.code.services.userService.UserService;
-import escape.code.services.userService.UserServiceImpl;
+import escape.code.daos.PuzzleDao;
+import escape.code.daos.impls.PuzzleDaoImpl;
+import escape.code.daos.PuzzleRectangleDao;
+import escape.code.daos.impls.PuzzleRectangleDaoImpl;
+import escape.code.daos.UserDao;
+import escape.code.daos.impls.UserDaoImpl;
+import escape.code.services.PuzzleRectangleService;
+import escape.code.services.impls.PuzzleRectangleServiceImpl;
+import escape.code.services.PuzzleService;
+import escape.code.services.impls.PuzzleServiceImpl;
+import escape.code.services.UserService;
+import escape.code.services.impls.UserServiceImpl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,18 +38,18 @@ public class InjectionModule extends AbstractModule {
      * Binds interfaces tho corresponding implementations
      */
     public void configure() {
-        bind(UserDao.class).to(UserDaoImpl.class);
-        bind(PuzzleDao.class).to(PuzzleDaoImpl.class);
-        bind(PuzzleRectangleDao.class).to(PuzzleRectangleDaoImpl.class);
-        bind(UserService.class).to(UserServiceImpl.class);
-        bind(PuzzleService.class).to(PuzzleServiceImpl.class);
-        bind(PuzzleRectangleService.class).to(PuzzleRectangleServiceImpl.class);
+        this.bind(UserDao.class).to(UserDaoImpl.class);
+        this.bind(PuzzleDao.class).to(PuzzleDaoImpl.class);
+        this.bind(PuzzleRectangleDao.class).to(PuzzleRectangleDaoImpl.class);
+        this.bind(UserService.class).to(UserServiceImpl.class);
+        this.bind(PuzzleService.class).to(PuzzleServiceImpl.class);
+        this.bind(PuzzleRectangleService.class).to(PuzzleRectangleServiceImpl.class);
 
-        requestStaticInjection(LoginController.class);
-        requestStaticInjection(EngineImpl.class);
-        requestStaticInjection(Game.class);
-        requestStaticInjection(HowToPlayController.class);
-        requestStaticInjection(MenuController.class);
+        this.requestStaticInjection(LoginController.class);
+        this.requestStaticInjection(EngineImpl.class);
+        this.requestStaticInjection(Game.class);
+        this.requestStaticInjection(HowToPlayController.class);
+        this.requestStaticInjection(MenuController.class);
     }
 
     /**
@@ -57,7 +57,6 @@ public class InjectionModule extends AbstractModule {
      * @param entityManagerFactory - creates entity manager
      * @return created entity manager
      */
-
     @Provides
     @Singleton
     public EntityManager provideEntityManager(EntityManagerFactory entityManagerFactory) {

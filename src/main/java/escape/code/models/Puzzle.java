@@ -24,6 +24,7 @@ public class Puzzle implements Serializable {
     private boolean isAnswerGiven;
 
     public Puzzle() {
+        super();
     }
 
     public String getQuestion() {

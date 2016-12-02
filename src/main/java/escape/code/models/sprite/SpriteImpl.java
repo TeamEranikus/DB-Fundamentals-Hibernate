@@ -12,16 +12,20 @@ import java.util.HashMap;
 
 /**
  * Keeps logic for player game object
+ *
  */
 public class SpriteImpl implements Sprite {
 
-    private final Image RIGHT_IMAGE_VIEW = new Image(getClass().getResource(Constants.SPRITE_IMAGE_RIGHT_PATH).toExternalForm());
-    private final Image LEFT_IMAGE_VIEW = new Image(getClass().getResource(Constants.SPRITE_IMAGE_LEFT_PATH).toExternalForm());
+    private final Image RIGHT_IMAGE_VIEW =
+            new Image(this.getClass().getResource(Constants.SPRITE_IMAGE_RIGHT_PATH).toExternalForm());
+    private final Image LEFT_IMAGE_VIEW =
+            new Image(this.getClass().getResource(Constants.SPRITE_IMAGE_LEFT_PATH).toExternalForm());
     private ImageView imageView;
     private ResizableCanvas currentCanvas;
 
     /**
      * Sets up sprite image and canvas
+     *
      * @param image - player sprite image
      * @param canvas - player sprite canvas
      */
@@ -32,6 +36,7 @@ public class SpriteImpl implements Sprite {
 
     /**
      * Gets sprite image view
+     *
      * @return - image view
      */
     public ImageView getImageView() {
@@ -39,11 +44,12 @@ public class SpriteImpl implements Sprite {
     }
 
     /**
-     * Update sprite coordinates by movement
+     * Update sprite coordinates on movement
+     *
      * @param keys - pressed keys
      * @param rectCollision - level rectangle collisions
      */
-    public void updateSpriteCoordinates(HashMap<KeyCode, Boolean> keys, ArrayList<Rectangle> rectCollision) {
+    public void updateCoordinates(HashMap<KeyCode, Boolean> keys, ArrayList<Rectangle> rectCollision) {
         if (this.isPressed(KeyCode.UP, keys)) {
             this.moveY(-2);
             this.checkBounds("U", rectCollision);
@@ -61,8 +67,9 @@ public class SpriteImpl implements Sprite {
 
     /**
      * Checks for puzzle collision with detected rectangle
+     *
      * @param current - current rectangle
-     * @return - if collision is detected
+     * @return - whether collision is detected
      */
     public boolean checkForCol(Rectangle current) {
         if (current.isDisabled()) {
@@ -72,33 +79,36 @@ public class SpriteImpl implements Sprite {
     }
 
     /**
-     * Moves sprite right or left and sets current sprite to the corresponding one (right or left)
+     * Moves sprite right or left and sets current sprite
+     * to the corresponding one (right or left)
+     *
      * @param x - moved direction: right if is more than zero or left if is less
      */
     private void moveX(int x) {
-        boolean right = x > 0 ? true : false;
+        boolean right = x > 0;
         for (int i = 0; i < Math.abs(x); i++) {
             if (right) {
                 double rightBound = this.currentCanvas.getLayoutX() + this.currentCanvas.getWidth() -
                         (this.imageView.getX() + this.imageView.getFitWidth());
                 this.imageView.setLayoutX(this.imageView.getLayoutX() + 1 > rightBound ?
                         rightBound : this.imageView.getLayoutX() + 1);
-                this.imageView.setImage(RIGHT_IMAGE_VIEW);
+                this.imageView.setImage(this.RIGHT_IMAGE_VIEW);
             } else {
                 double leftBound = this.currentCanvas.getLayoutX();
                 this.imageView.setLayoutX(this.imageView.getLayoutX() - 1 < leftBound ?
                         leftBound : this.imageView.getLayoutX() - 1);
-                this.imageView.setImage(LEFT_IMAGE_VIEW);
+                this.imageView.setImage(this.LEFT_IMAGE_VIEW);
             }
         }
     }
 
     /**
      * Moves sprite up or down
+     *
      * @param y - moved direction: down if is more than zero or up if is less
      */
     private void moveY(int y) {
-        boolean down = y > 0 ? true : false;
+        boolean down = y > 0;
         for (int i = 0; i < Math.abs(y); i++) {
             if (down) {
                 double downBound = this.currentCanvas.getLayoutY() + this.currentCanvas.getHeight() -
@@ -115,6 +125,8 @@ public class SpriteImpl implements Sprite {
 
     /**
      * Check if key was pressed
+     *
+     * @return whether key is pressed
      */
     private boolean isPressed(KeyCode key, HashMap<KeyCode, Boolean> keys) {
         return keys.getOrDefault(key, false);
@@ -125,7 +137,7 @@ public class SpriteImpl implements Sprite {
      */
     private void checkBounds(String direction, ArrayList<Rectangle> rectCollision) {
         for (Rectangle rectangle : rectCollision) {
-            if (checkForCol(rectangle)) {
+            if (this.checkForCol(rectangle)) {
                 switch (direction) {
                     case "U":
                         this.getImageView().setLayoutY(this.getImageView().getLayoutY() + 2);
