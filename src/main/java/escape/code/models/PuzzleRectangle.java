@@ -4,7 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 /**
- * Sets up puzzles rectangles database
+ * Sets up puzzle rectangle database
  */
 @Entity
 @Table(name = "puzzles_rectangles")
@@ -47,7 +47,7 @@ public class PuzzleRectangle {
     }
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "puzzle_id",nullable = false)
+    @JoinColumn(name = "puzzle_id", nullable = false)
     public Puzzle getPuzzle() {
         return this.puzzle;
     }

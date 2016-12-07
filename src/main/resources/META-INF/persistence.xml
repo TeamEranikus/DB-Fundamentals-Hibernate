@@ -6,13 +6,14 @@
        <class>escape.code.models.User</class>
        <class>escape.code.models.Puzzle</class>
        <class>escape.code.models.PuzzleRectangle</class>
+       <class>escape.code.models.Score</class>
         <properties>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
             <property name="hibernate.connection.driver_class" value= "com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/escape_code?createDatabaseIfNotExist=true"/>
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="1234"/>
-            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.id.new_generator_mappings" value="true"/>

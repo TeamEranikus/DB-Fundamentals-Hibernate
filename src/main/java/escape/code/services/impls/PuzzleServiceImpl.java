@@ -18,7 +18,7 @@ public class PuzzleServiceImpl implements PuzzleService {
     private static final int PUZZLE_CORRESPONDING_LEVEL_INDEX = 5;
     private static final int PUZZLE_CORRESPONDING_ITEM_INDEX = 6;
 
-    private PuzzleDao puzzleDao;
+    private final PuzzleDao puzzleDao;
 
     @Inject
     public PuzzleServiceImpl(PuzzleDao puzzleDao) {

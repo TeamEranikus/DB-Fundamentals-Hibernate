@@ -12,7 +12,6 @@ import java.util.HashMap;
 
 /**
  * Keeps logic for player game object
- *
  */
 public class SpriteImpl implements Sprite {
 
@@ -26,7 +25,7 @@ public class SpriteImpl implements Sprite {
     /**
      * Sets up sprite image and canvas
      *
-     * @param image - player sprite image
+     * @param image  - player sprite image
      * @param canvas - player sprite canvas
      */
     public SpriteImpl(ImageView image, ResizableCanvas canvas) {
@@ -46,7 +45,7 @@ public class SpriteImpl implements Sprite {
     /**
      * Update sprite coordinates on movement
      *
-     * @param keys - pressed keys
+     * @param keys          - pressed keys
      * @param rectCollision - level rectangle collisions
      */
     public void updateCoordinates(HashMap<KeyCode, Boolean> keys, ArrayList<Rectangle> rectCollision) {

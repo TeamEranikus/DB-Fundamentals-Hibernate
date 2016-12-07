@@ -1,29 +1,34 @@
 package escape.code.models;
 
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Sets up user database
  */
 @Entity
 @Table(name = "users")
-public class User implements Serializable{
+public class User implements Serializable {
 
     private String name;
     private String password;
     private Long id;
     private int level;
     private PuzzleRectangle puzzleRectangle;
+    private Long currentTime;
+    private Set<Score> scores;
 
-    public User(){
+    public User() {
         super();
     }
 
     @Id
-    @GenericGenerator(name="incrementer" , strategy="increment")
-    @GeneratedValue(generator="incrementer")
+    @GenericGenerator(name = "incrementer", strategy = "increment")
+    @GeneratedValue(generator = "incrementer")
     public Long getId() {
         return this.id;
     }
@@ -67,5 +72,31 @@ public class User implements Serializable{
 
     public void setPuzzleRectangle(PuzzleRectangle puzzleRectangle) {
         this.puzzleRectangle = puzzleRectangle;
+    }
+
+    @Basic
+    public Long getCurrentTime() {
+        return this.currentTime;
+    }
+
+    public void setCurrentTime(Long currentTime) {
+        this.currentTime = currentTime;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user",
+            fetch = FetchType.LAZY, targetEntity = Score.class)
+    public Set<Score> getScores() {
+        if (this.scores == null) {
+            this.setScores(new HashSet<>());
+        }
+        return this.scores;
+    }
+
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
+    }
+
+    public void addScore(Score score) {
+        this.getScores().add(score);
     }
 }

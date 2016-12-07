@@ -11,8 +11,8 @@ public class UserServiceImpl implements UserService {
 
     private static final int DEFAULT_START_LEVEL = 0;
 
-    private UserDao userDao;
-    private PuzzleRectangleService puzzleRectangleService;
+    private final UserDao userDao;
+    private final PuzzleRectangleService puzzleRectangleService;
 
     @Inject
     public UserServiceImpl(UserDao userDao, PuzzleRectangleService puzzleRectangleService) {

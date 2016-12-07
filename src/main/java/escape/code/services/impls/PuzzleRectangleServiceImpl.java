@@ -15,8 +15,8 @@ public class PuzzleRectangleServiceImpl implements PuzzleRectangleService {
     private static final int PUZZLE_RECTANGLE_LEVEL_INDEX = 1;
     private static final int PUZZLE_RECTANGLE_CORESPONDING_PUZZLE_INDEX = 2;
 
-    private PuzzleRectangleDao puzzleRectangleDao;
-    private PuzzleService puzzleService;
+    private final PuzzleRectangleDao puzzleRectangleDao;
+    private final PuzzleService puzzleService;
 
     @Inject
     public PuzzleRectangleServiceImpl(PuzzleRectangleDao puzzleRectangleDao, PuzzleService puzzleService) {

@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * Controls the fxml file for the login scene
@@ -77,6 +78,12 @@ public class LoginController {
         if (password.trim().length() == 0) {
             throw new IllegalArgumentException("Password cannot be empty!");
         }
+    }
+
+    public void onQuitClicked(ActionEvent actionEvent) {
+        Stage currentStage = (Stage) this.usernameField.getScene().getWindow();
+        currentStage.close();
+        System.exit(0);
     }
 }
 

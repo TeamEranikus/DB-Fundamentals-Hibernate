@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-
 <?import escape.code.core.ResizableCanvas?>
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="sceneImage" fitHeight="600.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -18,11 +21,11 @@
             <Image url="@../pictures/EmoticonLeft.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="piano" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="61.0" layoutX="100.0" layoutY="463.0" stroke="BLACK" strokeType="INSIDE" width="200.0" visible="false" />
-      <Rectangle fx:id="library" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="35.0" layoutX="726.0" layoutY="178.0" rotate="43.5" stroke="BLACK" strokeType="INSIDE" width="114.0" visible="false" />
-      <Rectangle fx:id="computer" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="61.0" layoutX="124.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" width="154.0" visible="false" />
-      <Rectangle fx:id="door" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="35.0" layoutX="800.0" layoutY="308.0" rotate="86.6" stroke="BLACK" strokeType="INSIDE" width="114.0" visible="false" />
-      <Rectangle fx:id="pianoRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff04" height="130.0" layoutX="120.0" layoutY="423.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="137.0"  />
+      <Rectangle fx:id="piano" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="61.0" layoutX="100.0" layoutY="463.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="200.0" />
+      <Rectangle fx:id="library" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="35.0" layoutX="726.0" layoutY="178.0" rotate="43.5" stroke="BLACK" strokeType="INSIDE" visible="false" width="114.0" />
+      <Rectangle fx:id="computer" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="61.0" layoutX="124.0" layoutY="121.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="154.0" />
+      <Rectangle fx:id="door" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="35.0" layoutX="800.0" layoutY="308.0" rotate="86.6" stroke="BLACK" strokeType="INSIDE" visible="false" width="114.0" />
+      <Rectangle fx:id="pianoRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff04" height="130.0" layoutX="120.0" layoutY="423.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="137.0" />
       <Rectangle fx:id="tableRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff04" height="61.0" layoutX="413.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="180.0" />
       <Rectangle fx:id="computerRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff04" height="61.0" layoutX="130.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="128.0" />
       <Rectangle fx:id="commodRectCol" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff04" height="71.0" layoutX="820.0" layoutY="478.0" stroke="BLACK" strokeType="INSIDE" visible="false" width="65.0" />
@@ -42,5 +45,10 @@
             <Image url="@../pictures/OneCount.png" />
          </image>
       </ImageView>
+      <Label fx:id="timeLabel" layoutX="628.0" layoutY="565.0" text="00:00:00" textFill="#b3ff00">
+         <font>
+            <Font size="42.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

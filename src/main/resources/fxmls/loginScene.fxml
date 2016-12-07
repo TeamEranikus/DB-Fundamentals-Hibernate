@@ -17,11 +17,11 @@
             <Image url="@../pictures/LogInScreen.png" />
          </image>
       </ImageView>
-      <Label layoutX="125.0" layoutY="137.0" text="Username" textFill="#cddc94">
+      <Label focusTraversable="false" layoutX="125.0" layoutY="137.0" text="Username" textFill="#cddc94">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label layoutX="125.0" layoutY="216.0" text="Password" textFill="#cddc94">
+      <Label focusTraversable="false" layoutX="125.0" layoutY="216.0" text="Password" textFill="#cddc94">
          <font>
             <Font size="24.0" />
          </font></Label>
@@ -30,21 +30,26 @@
          <font>
             <Font size="24.0" />
          </font></TextField>
-      <VBox alignment="CENTER" layoutX="92.0" layoutY="436.0" prefHeight="194.0" prefWidth="267.0" spacing="30.0">
+      <VBox alignment="CENTER" layoutX="92.0" layoutY="409.0" prefHeight="194.0" prefWidth="267.0" spacing="30.0">
          <children>
-            <Button fx:id="loginButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e5f495;" text="Login">
+            <Button fx:id="loginButton" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e5f495;" text="Login">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-            <Button fx:id="registerButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#register" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e5f495;" text="Register">
+            <Button fx:id="registerButton" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#register" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: e5f495;" text="Register">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="quitButton" cancelButton="true" focusTraversable="false" layoutX="55.0" layoutY="580.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onQuitClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;" text="Quit">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <Label fx:id="messageLabel" layoutX="125.0" layoutY="285.0" prefHeight="50.0" prefWidth="400.0" textFill="#ff4c4c">
+      <Label fx:id="messageLabel" focusTraversable="false" layoutX="125.0" layoutY="285.0" prefHeight="50.0" prefWidth="400.0" textFill="#ff4c4c">
          <font>
             <Font size="24.0" />
          </font></Label>

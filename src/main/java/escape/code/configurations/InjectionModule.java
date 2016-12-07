@@ -10,16 +10,20 @@ import escape.code.core.engine.EngineImpl;
 import escape.code.core.Game;
 import escape.code.core.StageManager;
 import escape.code.daos.PuzzleDao;
+import escape.code.daos.ScoreDao;
 import escape.code.daos.impls.PuzzleDaoImpl;
 import escape.code.daos.PuzzleRectangleDao;
 import escape.code.daos.impls.PuzzleRectangleDaoImpl;
 import escape.code.daos.UserDao;
+import escape.code.daos.impls.ScoreDaoImpl;
 import escape.code.daos.impls.UserDaoImpl;
 import escape.code.services.PuzzleRectangleService;
+import escape.code.services.ScoreService;
 import escape.code.services.impls.PuzzleRectangleServiceImpl;
 import escape.code.services.PuzzleService;
 import escape.code.services.impls.PuzzleServiceImpl;
 import escape.code.services.UserService;
+import escape.code.services.impls.ScoreServiceImpl;
 import escape.code.services.impls.UserServiceImpl;
 
 import javax.persistence.EntityManager;
@@ -41,9 +45,12 @@ public class InjectionModule extends AbstractModule {
         this.bind(UserDao.class).to(UserDaoImpl.class);
         this.bind(PuzzleDao.class).to(PuzzleDaoImpl.class);
         this.bind(PuzzleRectangleDao.class).to(PuzzleRectangleDaoImpl.class);
+        this.bind(ScoreDao.class).to(ScoreDaoImpl.class);
+
         this.bind(UserService.class).to(UserServiceImpl.class);
         this.bind(PuzzleService.class).to(PuzzleServiceImpl.class);
         this.bind(PuzzleRectangleService.class).to(PuzzleRectangleServiceImpl.class);
+        this.bind(ScoreService.class).to(ScoreServiceImpl.class);
 
         this.requestStaticInjection(LoginController.class);
         this.requestStaticInjection(EngineImpl.class);
@@ -82,7 +89,7 @@ public class InjectionModule extends AbstractModule {
     }
 
     /**
-     * Provides entity manager factory, used to create the entity manager
+     * Provides entity manager factory, used to persist the entity manager
      * @return created entity manager factory
      */
     @Provides
