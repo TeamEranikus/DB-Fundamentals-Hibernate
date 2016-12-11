@@ -1,4 +1,4 @@
-package escape.code.models;
+package escape.code.models.entities;
 
 import escape.code.enums.Item;
 import org.hibernate.annotations.GenericGenerator;

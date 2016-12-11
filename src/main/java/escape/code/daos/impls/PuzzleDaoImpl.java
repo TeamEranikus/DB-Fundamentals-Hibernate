@@ -2,7 +2,7 @@ package escape.code.daos.impls;
 
 import com.google.inject.Inject;
 import escape.code.daos.PuzzleDao;
-import escape.code.models.Puzzle;
+import escape.code.models.entities.Puzzle;
 
 import javax.persistence.EntityManager;
 import java.util.List;

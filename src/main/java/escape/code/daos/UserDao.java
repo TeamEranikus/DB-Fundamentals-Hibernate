@@ -1,6 +1,6 @@
 package escape.code.daos;
 
-import escape.code.models.User;
+import escape.code.models.entities.User;
 
 /**
  * Data access object responsible for connection with user database

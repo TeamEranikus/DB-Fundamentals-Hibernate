@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import escape.code.core.engine.Engine;
 import escape.code.core.engine.EngineImpl;
 import escape.code.enums.Level;
-import escape.code.models.User;
+import escape.code.models.entities.User;
 import escape.code.services.UserService;
 import escape.code.utils.Constants;
 import javafx.animation.AnimationTimer;

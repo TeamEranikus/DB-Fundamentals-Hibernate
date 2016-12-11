@@ -2,7 +2,7 @@ package escape.code.daos.impls;
 
 import com.google.inject.Inject;
 import escape.code.daos.UserDao;
-import escape.code.models.User;
+import escape.code.models.entities.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

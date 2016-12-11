@@ -2,7 +2,7 @@ package escape.code.daos.impls;
 
 import com.google.inject.Inject;
 import escape.code.daos.PuzzleRectangleDao;
-import escape.code.models.PuzzleRectangle;
+import escape.code.models.entities.PuzzleRectangle;
 
 import javax.persistence.EntityManager;
 import java.util.List;

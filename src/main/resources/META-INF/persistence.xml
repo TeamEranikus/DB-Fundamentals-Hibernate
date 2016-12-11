@@ -3,10 +3,10 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     <persistence-unit name="escape_code">
-       <class>escape.code.models.User</class>
-       <class>escape.code.models.Puzzle</class>
-       <class>escape.code.models.PuzzleRectangle</class>
-       <class>escape.code.models.Score</class>
+       <class>escape.code.models.entities.User</class>
+       <class>escape.code.models.entities.Puzzle</class>
+       <class>escape.code.models.entities.PuzzleRectangle</class>
+       <class>escape.code.models.entities.Score</class>
         <properties>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
             <property name="hibernate.connection.driver_class" value= "com.mysql.jdbc.Driver"/>

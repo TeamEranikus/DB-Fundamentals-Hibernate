@@ -1,8 +1,7 @@
 package escape.code.services;
 
-import escape.code.models.Score;
-
-import java.util.List;
+import escape.code.models.dtos.ScoreDto;
+import javafx.collections.ObservableList;
 
 /**
  * Keeps logic for score database and score DAO communication
@@ -29,12 +28,12 @@ public interface ScoreService {
      * @param limit - limit for how much scores to get
      * @return - retrieved scores
      */
-    List<Score> getTopScores(int limit);
+    ObservableList<ScoreDto> getTopScores(int limit);
 
     /**
      * Retrieves top 10 scores from DB trough a DAO
      *
      * @return - retrieved scores
      */
-    List<Score> getTopTenScores();
+    ObservableList<ScoreDto> getTopTenScores();
 }

@@ -1,6 +1,6 @@
 package escape.code.controllers;
 
-import escape.code.models.Puzzle;
+import escape.code.models.entities.Puzzle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

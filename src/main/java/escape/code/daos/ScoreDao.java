@@ -1,6 +1,6 @@
 package escape.code.daos;
 
-import escape.code.models.Score;
+import escape.code.models.entities.Score;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@ package escape.code.services.impls;
 import com.google.inject.Inject;
 import escape.code.daos.PuzzleDao;
 import escape.code.enums.Item;
-import escape.code.models.Puzzle;
+import escape.code.models.entities.Puzzle;
 import escape.code.services.PuzzleService;
 
 import java.util.List;

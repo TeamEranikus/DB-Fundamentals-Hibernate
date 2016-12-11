@@ -1,6 +1,6 @@
 package escape.code.services;
 
-import escape.code.models.User;
+import escape.code.models.entities.User;
 
 /**
  * Keeps logic for user database and user DAO communication
@@ -11,6 +11,13 @@ public interface UserService {
      * Creates a new User and passes it for persistence to a DAO
      */
     void createUser(String username, String password);
+
+    /**
+     * Resets user's status after finishing the game
+     *
+     * @param user - user to reset
+     */
+    void resetUser(User user);
 
     /**
      * Updates a specified user trough a DAO

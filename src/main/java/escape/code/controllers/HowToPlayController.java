@@ -17,7 +17,6 @@ public class HowToPlayController {
 
     @FXML
     private Button backToGame;
-    private Stage currentStage;
 
     @Inject
     private static StageManager stageManager;
@@ -29,7 +28,7 @@ public class HowToPlayController {
      * @throws IOException
      */
     public void backToMenu(ActionEvent event) throws IOException {
-        this.currentStage = (Stage) this.backToGame.getScene().getWindow();
-        stageManager.loadSceneToPrimaryStage(this.currentStage, Constants.MENU_FXML_PATH);
+        Stage currentStage = (Stage) this.backToGame.getScene().getWindow();
+        stageManager.loadSceneToPrimaryStage(currentStage, Constants.MENU_FXML_PATH);
     }
 }

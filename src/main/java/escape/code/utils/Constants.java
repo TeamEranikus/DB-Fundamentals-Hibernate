@@ -19,4 +19,5 @@ public class Constants {
     public static final String SECOND_LEVEL_FXML_PATH = "/fxmls/secondLevelScene.fxml";
     public static final String SOUNDS_PATH = "target/classes/sounds/snd_music_next.mp3";
     public static final String GAME_FINISHED_FXML_PATH = "/fxmls/gameFinishedScene.fxml";
+    public static final String RANKING_FXML_PATH = "/fxmls/scoreboard.fxml";
 }

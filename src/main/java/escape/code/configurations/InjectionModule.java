@@ -3,9 +3,7 @@ package escape.code.configurations;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
-import escape.code.controllers.HowToPlayController;
-import escape.code.controllers.LoginController;
-import escape.code.controllers.MenuController;
+import escape.code.controllers.*;
 import escape.code.core.engine.EngineImpl;
 import escape.code.core.Game;
 import escape.code.core.StageManager;
@@ -57,6 +55,8 @@ public class InjectionModule extends AbstractModule {
         this.requestStaticInjection(Game.class);
         this.requestStaticInjection(HowToPlayController.class);
         this.requestStaticInjection(MenuController.class);
+        this.requestStaticInjection(GameFinishedController.class);
+        this.requestStaticInjection(ScoreboardController.class);
     }
 
     /**

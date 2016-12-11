@@ -1,4 +1,4 @@
-package escape.code.models;
+package escape.code.models.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;

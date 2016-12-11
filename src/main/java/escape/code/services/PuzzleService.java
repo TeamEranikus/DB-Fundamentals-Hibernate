@@ -1,6 +1,6 @@
 package escape.code.services;
 
-import escape.code.models.Puzzle;
+import escape.code.models.entities.Puzzle;
 import java.util.List;
 
 /**

@@ -4,24 +4,30 @@ import com.google.inject.Inject;
 import escape.code.controllers.PuzzleController;
 import escape.code.core.ResizableCanvas;
 import escape.code.core.StageManager;
+import escape.code.core.TimeHandler;
 import escape.code.enums.Item;
-import escape.code.models.Puzzle;
-import escape.code.models.PuzzleRectangle;
-import escape.code.models.User;
+import escape.code.models.entities.Puzzle;
+import escape.code.models.entities.PuzzleRectangle;
+import escape.code.models.entities.Score;
+import escape.code.models.entities.User;
 import escape.code.models.sprite.Sprite;
 import escape.code.models.sprite.SpriteImpl;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.UserService;
 import escape.code.utils.Constants;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +37,7 @@ import java.util.List;
  * Keeps the logic for the running level scene
  * Run by Game class
  */
-public class EngineImpl implements Engine {
+public class EngineImpl implements Engine, TimeHandler.Listener {
 
     private static final String STOP_TIMER = "stop";
     private static final String CANVAS_ID = "mainCanvas";
@@ -41,6 +47,7 @@ public class EngineImpl implements Engine {
     private static final int PUZZLE_INCREMENTER = 1;
     private static final int DEFAULT_SPRITE_X_POSITION = 480;
     private static final int DEFAULT_SPRITE_Y_POSITION = 300;
+    private static final String TIME_LABEL_ID = "timeLabel"; // TODO make timer work
 
     @Inject
     private static PuzzleRectangleService puzzleRectangleService;
@@ -101,6 +108,19 @@ public class EngineImpl implements Engine {
         }
     }
 
+    @Override
+    public void onTimeChanged(long timeInSecs) {
+        int hours = (int) (timeInSecs / 3600);
+        timeInSecs %= 3600;
+        int mins = (int) (timeInSecs / 60);
+        int secs = (int) (timeInSecs % 60);
+        String time = String.format("%02d:%02d:%02d", hours, mins, secs);
+
+        this.user.setCurrentTime(timeInSecs);
+        Label timeLabel = (Label) this.objectsInCurrentScene.get(TIME_LABEL_ID);
+        timeLabel.setText(time);
+    }
+
     private void initialize() {
         this.keys = new HashMap<>();
         this.rectCollision = new ArrayList<>();
@@ -115,6 +135,18 @@ public class EngineImpl implements Engine {
         this.updateItems();
         scene.setOnKeyPressed(event -> this.keys.put(event.getCode(), true));
         scene.setOnKeyReleased(event -> this.keys.put(event.getCode(), false));
+        Timeline timer = this.setupTimer();
+        timer.play();
+    }
+
+    private Timeline setupTimer() {
+        long timeInSecs = this.user.getCurrentTime();
+        TimeHandler timeHandler = new TimeHandler(timeInSecs, this);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1d), timeHandler);
+        Timeline timeline = new Timeline(keyFrame);
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        this.onTimeChanged(timeInSecs);
+        return timeline;
     }
 
     private void setCurrentPuzzle() throws IllegalStateException {
@@ -129,6 +161,13 @@ public class EngineImpl implements Engine {
             }
             this.stageManager.loadSceneToPrimaryStage(new Stage(), Constants.PUZZLE_FXML_PATH);
         } else if (currentPuzzleRectangleId.contains(END_GAME_RECTANGLE_ID)) {
+            if (this.user.getPuzzleRectangle().getId() == 12) {
+                Score score = new Score();
+                score.setFinishTime(this.user.getCurrentTime());
+                score.setUser(this.user);
+                this.user.addScore(score);
+                this.userService.resetUser(this.user);
+            }
             this.userService.updateUser(this.user);
             this.stageManager.loadSceneToPrimaryStage(this.currentLoadedStage, Constants.GAME_FINISHED_FXML_PATH);
         } else {
@@ -146,7 +185,6 @@ public class EngineImpl implements Engine {
             Rectangle current = (Rectangle) this.objectsInCurrentScene.get(id);
             this.rectCollision.add(current);
         });
-
     }
 
     /**

@@ -2,8 +2,8 @@ package escape.code.services.impls;
 
 import com.google.inject.Inject;
 import escape.code.daos.UserDao;
-import escape.code.models.PuzzleRectangle;
-import escape.code.models.User;
+import escape.code.models.entities.PuzzleRectangle;
+import escape.code.models.entities.User;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.UserService;
 
@@ -29,6 +29,13 @@ public class UserServiceImpl implements UserService {
         PuzzleRectangle puzzleRectangle = this.puzzleRectangleService.getFirst();
         user.setPuzzleRectangle(puzzleRectangle);
         this.userDao.create(user);
+    }
+
+    @Override
+    public void resetUser(User user) {
+        user.setPuzzleRectangle(this.puzzleRectangleService.getFirst());
+        user.setCurrentTime(0L);
+        user.setLevel(0);
     }
 
     @Override

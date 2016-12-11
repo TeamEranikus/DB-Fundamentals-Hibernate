@@ -2,7 +2,7 @@ package escape.code.controllers;
 
 import com.google.inject.Inject;
 import escape.code.core.Game;
-import escape.code.models.User;
+import escape.code.models.entities.User;
 import escape.code.services.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -86,4 +86,3 @@ public class LoginController {
         System.exit(0);
     }
 }
-

@@ -2,10 +2,13 @@ package escape.code.services.impls;
 
 import com.google.inject.Inject;
 import escape.code.daos.ScoreDao;
-import escape.code.models.Score;
-import escape.code.models.User;
+import escape.code.models.dtos.ScoreDto;
+import escape.code.models.entities.Score;
+import escape.code.models.entities.User;
 import escape.code.services.ScoreService;
 import escape.code.services.UserService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.List;
 
@@ -36,12 +39,32 @@ public class ScoreServiceImpl implements ScoreService {
     }
 
     @Override
-    public List<Score> getTopScores(int limit) {
-        return this.scoreDao.getTopScores(limit);
+    public ObservableList<ScoreDto> getTopScores(int limit) {
+        ObservableList<ScoreDto> reslut = FXCollections.observableArrayList();
+        List<Score> scores = this.scoreDao.getTopScores(limit);
+        for (int i = 0; i < scores.size(); i++) {
+            ScoreDto scoreDto = this.convertScoreToDto(scores.get(i), i + 1);
+            reslut.add(scoreDto);
+        }
+        return reslut;
     }
 
     @Override
-    public List<Score> getTopTenScores() {
-        return this.scoreDao.getTopScores(10);
+    public ObservableList<ScoreDto> getTopTenScores() {
+        return this.getTopScores(10);
+    }
+
+    private ScoreDto convertScoreToDto(Score score, int position) {
+        ScoreDto scoreDto = new ScoreDto();
+        long timeInSecs = score.getFinishTime();
+        int hours = (int) (timeInSecs / 3600);
+        timeInSecs %= 3600;
+        int mins = (int) (timeInSecs / 60);
+        int secs = (int) (timeInSecs % 60);
+        String time = String.format("%02d:%02d:%02d", hours, mins, secs);
+        scoreDto.setTime(time);
+        scoreDto.setUsername(score.getUser().getName());
+        scoreDto.setPostion(position);
+        return scoreDto;
     }
 }

@@ -50,4 +50,9 @@ public class MenuController {
         this.currentStage.close();
         System.exit(0);
     }
+
+    public void onRankingClicked(ActionEvent event) {
+        this.currentStage = (Stage) this.howToPlayButton.getScene().getWindow();
+        stageManager.loadSceneToPrimaryStage(this.currentStage, Constants.RANKING_FXML_PATH);
+    }
 }

@@ -7,41 +7,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0"
-            prefWidth="920.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="escape.code.controllers.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escape.code.controllers.MenuController">
     <children>
         <ImageView fitHeight="707.0" fitWidth="930.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../pictures/MenuScreen.png"/>
+                <Image url="@../pictures/MenuScreen.png" />
             </image>
         </ImageView>
-        <Button fx:id="newGameButton" defaultButton="true" layoutX="55.0" layoutY="400.0" maxHeight="-Infinity"
-                maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                onAction="#onNewGameClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;"
-                text="Play">
+        <Button fx:id="newGameButton" defaultButton="true" layoutX="59.0" layoutY="335.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onNewGameClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;" text="Play">
             <font>
-                <Font size="24.0"/>
+                <Font size="24.0" />
             </font>
         </Button>
-        <Button fx:id="howToPlayButton" layoutX="55.0" layoutY="490.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onHowToPlayClicked"
-                prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;" text="How to Play">
+        <Button fx:id="howToPlayButton" layoutX="55.0" layoutY="494.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onHowToPlayClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;" text="How to Play">
             <font>
-                <Font size="24.0"/>
+                <Font size="24.0" />
             </font>
         </Button>
-        <Button fx:id="quitButton" cancelButton="true" layoutX="55.0" layoutY="580.0" maxHeight="-Infinity"
-                maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"
-                onAction="#onQuitClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;"
-                text="Quit">
+        <Button fx:id="quitButton" cancelButton="true" layoutX="55.0" layoutY="580.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onQuitClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;" text="Quit">
             <font>
-                <Font size="24.0"/>
+                <Font size="24.0" />
             </font>
         </Button>
+      <Button fx:id="rankingButton" defaultButton="true" layoutX="58.0" layoutY="415.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRankingClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e5f495;" text="Ranking">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
 
     </children>
     <padding>
-        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
+        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
     </padding>
 </AnchorPane>

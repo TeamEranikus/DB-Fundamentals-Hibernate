@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escape.code.controllers.GameFinishedController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="668.0" prefWidth="932.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="escape.code.controllers.GameFinishedController">
    <children>
       <ImageView fitHeight="677.0" fitWidth="947.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../pictures/GameFinished.png" />
          </image>
       </ImageView>
-      <Button fx:id="exitButton" layoutX="139.0" layoutY="528.0" mnemonicParsing="false" onAction="#exitGame" prefHeight="70.0" prefWidth="195.0" style="-fx-background-color: #e5f495;" text="EXIT">
+      <Button fx:id="backToGame" layoutX="139.0" layoutY="528.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="82.0" prefWidth="300.0" style="-fx-background-color: #e5f495;" text="Back to Menu">
          <font>
             <Font size="39.0" />
          </font>

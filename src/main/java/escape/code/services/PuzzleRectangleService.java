@@ -1,6 +1,6 @@
 package escape.code.services;
 
-import escape.code.models.PuzzleRectangle;
+import escape.code.models.entities.PuzzleRectangle;
 
 import java.util.List;
 

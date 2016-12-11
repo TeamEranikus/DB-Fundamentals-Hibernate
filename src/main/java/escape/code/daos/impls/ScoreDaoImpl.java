@@ -2,7 +2,7 @@ package escape.code.daos.impls;
 
 import com.google.inject.Inject;
 import escape.code.daos.ScoreDao;
-import escape.code.models.Score;
+import escape.code.models.entities.Score;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -49,7 +49,7 @@ public class ScoreDaoImpl implements ScoreDao {
     @SuppressWarnings("unchecked")
     public List<Score> getTopScores(int limit) {
         return this.entityManager
-                .createQuery("SELECT s FROM Score AS s")
+                .createQuery("SELECT s FROM Score AS s ORDER BY s.finishTime ASC")
                 .setMaxResults(limit)
                 .getResultList();
     }

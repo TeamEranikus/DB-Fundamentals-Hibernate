@@ -1,4 +1,4 @@
-package escape.code.models;
+package escape.code.models.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,7 +19,7 @@ public class User implements Serializable {
     private Long id;
     private int level;
     private PuzzleRectangle puzzleRectangle;
-    private Long currentTime;
+    private long currentTime = 0;
     private Set<Score> scores;
 
     public User() {
@@ -65,7 +65,7 @@ public class User implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "puzzle_rectangle", nullable = true)
+    @JoinColumn(name = "puzzle_rectangle_id", nullable = true)
     public PuzzleRectangle getPuzzleRectangle() {
         return this.puzzleRectangle;
     }
@@ -75,11 +75,12 @@ public class User implements Serializable {
     }
 
     @Basic
-    public Long getCurrentTime() {
+//    @Column(name = "current_time", columnDefinition = "bigint default '0'")
+    public long getCurrentTime() {
         return this.currentTime;
     }
 
-    public void setCurrentTime(Long currentTime) {
+    public void setCurrentTime(long currentTime) {
         this.currentTime = currentTime;
     }
 

@@ -2,8 +2,8 @@ package escape.code.services.impls;
 
 import com.google.inject.Inject;
 import escape.code.daos.PuzzleRectangleDao;
-import escape.code.models.Puzzle;
-import escape.code.models.PuzzleRectangle;
+import escape.code.models.entities.Puzzle;
+import escape.code.models.entities.PuzzleRectangle;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.PuzzleService;
 
