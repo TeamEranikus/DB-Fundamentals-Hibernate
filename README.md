@@ -3,8 +3,11 @@ for DB Fundamentals Hibernate course project Application: "EscapeCode"
 
 Developed by: 
 	Todor Ilchev 
+	
 	Elica Tasheva 
+	
 	Dimana Toteva 
+	
 	Ivan Ivanov
 
 Sofia – 2016
