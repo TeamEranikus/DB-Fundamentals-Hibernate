@@ -1,5 +1,6 @@
 package escape.code.models.sprite;
 
+import escape.code.core.ResizableCanvas;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
@@ -34,4 +35,16 @@ public interface Sprite {
      * @return - image view
      */
     ImageView getImageView();
+
+    /**
+     * Set player image
+     * @param imageView
+     */
+    void setImageView(ImageView imageView);
+
+    /**
+     * Set current player canvas
+     * @param currentCanvas
+     */
+    void setCurrentCanvas(ResizableCanvas currentCanvas);
 }

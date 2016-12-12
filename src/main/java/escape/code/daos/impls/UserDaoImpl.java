@@ -8,6 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
+import static escape.code.utils.Messages.INCORRECT_PASSWORD;
+import static escape.code.utils.Messages.USER_EXIST;
+import static escape.code.utils.Messages.USER_NOT_FOUND;
+
 /**
  * Data access object responsible for connection with user database
  */
@@ -28,9 +32,9 @@ public class UserDaoImpl implements UserDao {
     public User getLogedUser(String username, String password) {
         User user = this.getUserByName(username);
         if (user == null) {
-            throw new IllegalArgumentException("User not found!");
+            throw new IllegalArgumentException(USER_NOT_FOUND);
         } else if (!user.getPassword().equals(password)) {
-            throw new IllegalArgumentException("Password is incorrect!");
+            throw new IllegalArgumentException(INCORRECT_PASSWORD);
         }
         return user;
     }
@@ -44,7 +48,7 @@ public class UserDaoImpl implements UserDao {
     public void create(User user) {
         User currentUser = this.getUserByName(user.getName());
         if (currentUser != null) {
-            throw new IllegalArgumentException("User already exist!");
+            throw new IllegalArgumentException(USER_EXIST);
         }
         this.entityManager.getTransaction().begin();
         this.entityManager.persist(user);

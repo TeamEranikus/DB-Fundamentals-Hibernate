@@ -12,6 +12,9 @@ import java.util.List;
  */
 public class PuzzleRectangleDaoImpl implements PuzzleRectangleDao {
 
+    private static final int ZERO_BASED_ARGUMENT = 0;
+    private static final Long FIRST_RECTANGLE_INDEX = 1L;
+
     @Inject
     private EntityManager entityManager;
 
@@ -37,9 +40,9 @@ public class PuzzleRectangleDaoImpl implements PuzzleRectangleDao {
     public PuzzleRectangle getFirst() {
         List<PuzzleRectangle> rectangles = this.entityManager
                 .createQuery("SELECT rectangle FROM PuzzleRectangle AS rectangle WHERE rectangle.id=:id")
-                .setParameter("id", 1L)
+                .setParameter("id", FIRST_RECTANGLE_INDEX)
                 .getResultList();
-        return rectangles.get(0);
+        return rectangles.get(ZERO_BASED_ARGUMENT);
     }
 
     /**
@@ -71,6 +74,6 @@ public class PuzzleRectangleDaoImpl implements PuzzleRectangleDao {
                 .createQuery("SELECT rectangle FROM PuzzleRectangle AS rectangle WHERE rectangle.id=:id")
                 .setParameter("id", id)
                 .getResultList();
-        return rectangles.get(0);
+        return rectangles.get(ZERO_BASED_ARGUMENT);
     }
 }

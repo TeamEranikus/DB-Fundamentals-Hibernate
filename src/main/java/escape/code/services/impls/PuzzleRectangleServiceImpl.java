@@ -13,7 +13,7 @@ public class PuzzleRectangleServiceImpl implements PuzzleRectangleService {
 
     private static final int PUZZLE_RECTANGLE_NAME_INDEX = 0;
     private static final int PUZZLE_RECTANGLE_LEVEL_INDEX = 1;
-    private static final int PUZZLE_RECTANGLE_CORESPONDING_PUZZLE_INDEX = 2;
+    private static final int PUZZLE_RECTANGLE_CORRESPONDING_PUZZLE_INDEX = 2;
 
     private final PuzzleRectangleDao puzzleRectangleDao;
     private final PuzzleService puzzleService;
@@ -30,7 +30,7 @@ public class PuzzleRectangleServiceImpl implements PuzzleRectangleService {
         puzzleRectangle.setName(params[PUZZLE_RECTANGLE_NAME_INDEX]);
         puzzleRectangle.setLevel(Integer.parseInt(params[PUZZLE_RECTANGLE_LEVEL_INDEX]));
         Puzzle puzzle = this.puzzleService
-                .getOneById(Long.parseLong(params[PUZZLE_RECTANGLE_CORESPONDING_PUZZLE_INDEX]));
+                .getOneById(Long.parseLong(params[PUZZLE_RECTANGLE_CORRESPONDING_PUZZLE_INDEX]));
         puzzleRectangle.setPuzzle(puzzle);
         this.puzzleRectangleDao.createPuzzleRectangle(puzzleRectangle);
     }

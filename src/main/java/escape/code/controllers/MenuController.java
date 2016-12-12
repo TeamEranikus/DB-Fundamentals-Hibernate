@@ -27,11 +27,14 @@ public class MenuController {
     @Inject
     private static StageManager stageManager;
 
+    @Inject
+    private static Game game;
+
     /**
      * Sets up current game level scene
      */
     public void onNewGameClicked(ActionEvent event) throws IOException {
-        Game.run();
+        game.run();
     }
 
     /**

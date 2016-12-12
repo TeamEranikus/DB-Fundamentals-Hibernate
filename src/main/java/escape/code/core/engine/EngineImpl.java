@@ -11,7 +11,6 @@ import escape.code.models.entities.PuzzleRectangle;
 import escape.code.models.entities.Score;
 import escape.code.models.entities.User;
 import escape.code.models.sprite.Sprite;
-import escape.code.models.sprite.SpriteImpl;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.UserService;
 import escape.code.utils.Constants;
@@ -49,36 +48,43 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
     private static final int DEFAULT_SPRITE_Y_POSITION = 300;
     private static final String TIME_LABEL_ID = "timeLabel"; // TODO make timer work
 
-    @Inject
-    private static PuzzleRectangleService puzzleRectangleService;
+    private final PuzzleRectangleService puzzleRectangleService;
+    private final UserService userService;
+    private final StageManager stageManager;
+    private final Sprite sprite;
 
-    private UserService userService;
     private HashMap<KeyCode, Boolean> keys;
     private ObservableMap<String, Object> objectsInCurrentScene;
     private ArrayList<Rectangle> rectCollision;
     private Rectangle currentPuzzleRectangle;
     private boolean hasToSetPuzzle;
-    private Sprite sprite;
-    private StageManager stageManager;
     private Stage currentLoadedStage;
-    private FXMLLoader loader;
     private User user;
+    private FXMLLoader loader;
 
     /**
      * Set up the current scene engine
-     *
-     * @param loader       - scene fxml loader
-     * @param user         - current logged in user
+     * @param puzzleRectangleService
      * @param userService  - service responsible for connection with user database
      * @param stageManager - manager for the current stage
+     * @param sprite
      */
-    public EngineImpl(FXMLLoader loader, User user, UserService userService, StageManager stageManager) {
+    @Inject
+    public EngineImpl(PuzzleRectangleService puzzleRectangleService, UserService userService, StageManager stageManager, Sprite sprite) {
+        this.puzzleRectangleService = puzzleRectangleService;
         this.userService = userService;
-        this.loader = loader;
-        this.user = user;
         this.stageManager = stageManager;
+        this.sprite = sprite;
         this.hasToSetPuzzle = true;
-        this.initialize();
+    }
+
+    public void setLoader(FXMLLoader loader) {
+        this.loader = loader;
+    }
+
+    @Override
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**
@@ -121,7 +127,7 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
         timeLabel.setText(time);
     }
 
-    private void initialize() {
+    public void initialize() {
         this.keys = new HashMap<>();
         this.rectCollision = new ArrayList<>();
         Scene scene = ((Pane) this.loader.getRoot()).getScene();
@@ -129,12 +135,19 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
         this.objectsInCurrentScene = this.loader.getNamespace();
         ImageView playerImage = (ImageView) this.objectsInCurrentScene.get(IMAGE_PLAYER_ID);
         ResizableCanvas canvas = (ResizableCanvas) this.objectsInCurrentScene.get(CANVAS_ID);
-        this.sprite = new SpriteImpl(playerImage, canvas);
+        this.sprite.setImageView(playerImage);
+        this.sprite.setCurrentCanvas(canvas);
         this.currentPuzzleRectangle = this.getCurrentPuzzleRectangle();
         this.loadRectanglesCollision();
         this.updateItems();
-        scene.setOnKeyPressed(event -> this.keys.put(event.getCode(), true));
-        scene.setOnKeyReleased(event -> this.keys.put(event.getCode(), false));
+        scene.setOnKeyPressed(event -> {
+            event.consume();
+            this.keys.put(event.getCode(), true);
+        });
+        scene.setOnKeyReleased(event -> {
+            event.consume();
+            this.keys.put(event.getCode(), false);
+        });
         Timeline timer = this.setupTimer();
         timer.play();
     }

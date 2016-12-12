@@ -3,11 +3,13 @@ package escape.code;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import escape.code.configurations.InjectionModule;
+import escape.code.controllers.LoginController;
 import escape.code.core.Game;
 import escape.code.enums.Level;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.PuzzleService;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 
 import java.util.Arrays;
@@ -24,9 +26,15 @@ public class AppRun extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        this.seedData();
-        Guice.createInjector(new InjectionModule());
-        Game.initialize(primaryStage);
+        Injector injector = Guice.createInjector(new InjectionModule());
+        this.seedData(injector);
+        injector.injectMembers(LoginController.class);
+        Game game = injector.getInstance(Game.class);
+        game.initialize(primaryStage);
+        primaryStage.setOnCloseRequest(e -> {
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     /**
@@ -38,8 +46,7 @@ public class AppRun extends Application {
         AppRun.launch(args);
     }
 
-    private void seedData() {
-        Injector injector = Guice.createInjector(new InjectionModule());
+    private void seedData(Injector injector) {
         PuzzleService puzzleService = injector.getInstance(PuzzleService.class);
         PuzzleRectangleService puzzleRectangleService = injector.getInstance(PuzzleRectangleService.class);
         boolean shoudlSkipSeed = !this.isFirstRun(puzzleService, puzzleRectangleService);

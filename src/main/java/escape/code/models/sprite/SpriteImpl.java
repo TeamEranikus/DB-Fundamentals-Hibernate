@@ -19,18 +19,19 @@ public class SpriteImpl implements Sprite {
             new Image(this.getClass().getResource(Constants.SPRITE_IMAGE_RIGHT_PATH).toExternalForm());
     private final Image LEFT_IMAGE_VIEW =
             new Image(this.getClass().getResource(Constants.SPRITE_IMAGE_LEFT_PATH).toExternalForm());
+
     private ImageView imageView;
     private ResizableCanvas currentCanvas;
 
-    /**
-     * Sets up sprite image and canvas
-     *
-     * @param image  - player sprite image
-     * @param canvas - player sprite canvas
-     */
-    public SpriteImpl(ImageView image, ResizableCanvas canvas) {
-        this.imageView = image;
-        this.currentCanvas = canvas;
+    public SpriteImpl() {
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
+    }
+
+    public void setCurrentCanvas(ResizableCanvas currentCanvas) {
+        this.currentCanvas = currentCanvas;
     }
 
     /**

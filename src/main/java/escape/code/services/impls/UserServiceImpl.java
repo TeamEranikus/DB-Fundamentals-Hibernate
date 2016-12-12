@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void resetUser(User user) {
         user.setPuzzleRectangle(this.puzzleRectangleService.getFirst());
-        user.setCurrentTime(0L);
-        user.setLevel(0);
+        user.setCurrentTime(DEFAULT_START_LEVEL);
+        user.setLevel(DEFAULT_START_LEVEL);
     }
 
     @Override
