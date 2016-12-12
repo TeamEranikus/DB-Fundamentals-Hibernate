@@ -3,14 +3,15 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     <persistence-unit name="escape_code">
-       <class>escape.code.models.entities.User</class>
-       <class>escape.code.models.entities.Puzzle</class>
-       <class>escape.code.models.entities.PuzzleRectangle</class>
-       <class>escape.code.models.entities.Score</class>
+        <class>escape.code.models.entities.User</class>
+        <class>escape.code.models.entities.Puzzle</class>
+        <class>escape.code.models.entities.PuzzleRectangle</class>
+        <class>escape.code.models.entities.Score</class>
         <properties>
             <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
-            <property name="hibernate.connection.driver_class" value= "com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/escape_code?createDatabaseIfNotExist=true"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url"
+                      value="jdbc:mysql://localhost:3306/escape_code?createDatabaseIfNotExist=true&amp;useSSL=false"/>
             <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="1234"/>
             <property name="hibernate.show_sql" value="true"/>

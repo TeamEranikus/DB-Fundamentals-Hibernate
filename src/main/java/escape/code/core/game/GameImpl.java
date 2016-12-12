@@ -1,7 +1,8 @@
-package escape.code.core;
+package escape.code.core.game;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import escape.code.core.stageManager.StageManager;
 import escape.code.core.engine.Engine;
 import escape.code.enums.Level;
 import escape.code.models.entities.User;

@@ -4,10 +4,10 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import escape.code.controllers.*;
-import escape.code.core.Game;
-import escape.code.core.GameImpl;
-import escape.code.core.StageManager;
-import escape.code.core.StageManagerImpl;
+import escape.code.core.game.Game;
+import escape.code.core.game.GameImpl;
+import escape.code.core.stageManager.StageManager;
+import escape.code.core.stageManager.StageManagerImpl;
 import escape.code.core.engine.Engine;
 import escape.code.core.engine.EngineImpl;
 import escape.code.daos.PuzzleDao;
@@ -39,7 +39,6 @@ import javax.persistence.Persistence;
 public class InjectionModule extends AbstractModule {
 
     private static final ThreadLocal<EntityManager> ENTITY_MANAGER_CACHE = new ThreadLocal<>();
-   // private static final ThreadLocal<StageManagerImpl> STAGE_MANAGER_CACHE = new ThreadLocal<>();
 
     /**
      * Binds interfaces tho corresponding implementations
@@ -79,20 +78,6 @@ public class InjectionModule extends AbstractModule {
         }
         return entityManager;
     }
-
-//    /**
-//     * Provides stage manager, singleton implementation
-//     * @return created stage manager
-//     */
-//    @Provides
-//    @Singleton
-//    public StageManagerImpl provideStageManager() {
-//        StageManagerImpl stageManager = STAGE_MANAGER_CACHE.get();
-//        if (stageManager == null) {
-//            STAGE_MANAGER_CACHE.set(stageManager = new StageManagerImpl());
-//        }
-//        return stageManager;
-//    }
 
     /**
      * Provides entity manager factory, used to persist the entity manager

@@ -19,6 +19,8 @@ public class SpriteImpl implements Sprite {
             new Image(this.getClass().getResource(Constants.SPRITE_IMAGE_RIGHT_PATH).toExternalForm());
     private final Image LEFT_IMAGE_VIEW =
             new Image(this.getClass().getResource(Constants.SPRITE_IMAGE_LEFT_PATH).toExternalForm());
+    private static final int SPRITE_MOVE_STEP_INCREMENT = 2;
+    private static final int SPRITE_MOVE_STEP_DECREMENT = -2;
 
     private ImageView imageView;
     private ResizableCanvas currentCanvas;
@@ -34,43 +36,26 @@ public class SpriteImpl implements Sprite {
         this.currentCanvas = currentCanvas;
     }
 
-    /**
-     * Gets sprite image view
-     *
-     * @return - image view
-     */
     public ImageView getImageView() {
         return this.imageView;
     }
 
-    /**
-     * Update sprite coordinates on movement
-     *
-     * @param keys          - pressed keys
-     * @param rectCollision - level rectangle collisions
-     */
     public void updateCoordinates(HashMap<KeyCode, Boolean> keys, ArrayList<Rectangle> rectCollision) {
         if (this.isPressed(KeyCode.UP, keys)) {
-            this.moveY(-2);
+            this.moveY(SPRITE_MOVE_STEP_DECREMENT);
             this.checkBounds("U", rectCollision);
         } else if (this.isPressed(KeyCode.DOWN, keys)) {
-            this.moveY(2);
+            this.moveY(SPRITE_MOVE_STEP_INCREMENT);
             this.checkBounds("D", rectCollision);
         } else if (this.isPressed(KeyCode.RIGHT, keys)) {
-            this.moveX(2);
+            this.moveX(SPRITE_MOVE_STEP_INCREMENT);
             this.checkBounds("R", rectCollision);
         } else if (this.isPressed(KeyCode.LEFT, keys)) {
-            this.moveX(-2);
+            this.moveX(SPRITE_MOVE_STEP_DECREMENT);
             this.checkBounds("L", rectCollision);
         }
     }
 
-    /**
-     * Checks for puzzle collision with detected rectangle
-     *
-     * @param current - current rectangle
-     * @return - whether collision is detected
-     */
     public boolean checkForCol(Rectangle current) {
         if (current.isDisabled()) {
             return false;
@@ -140,16 +125,16 @@ public class SpriteImpl implements Sprite {
             if (this.checkForCol(rectangle)) {
                 switch (direction) {
                     case "U":
-                        this.getImageView().setLayoutY(this.getImageView().getLayoutY() + 2);
+                        this.getImageView().setLayoutY(this.getImageView().getLayoutY() + SPRITE_MOVE_STEP_INCREMENT);
                         break;
                     case "D":
-                        this.getImageView().setLayoutY(this.getImageView().getLayoutY() - 2);
+                        this.getImageView().setLayoutY(this.getImageView().getLayoutY() + SPRITE_MOVE_STEP_DECREMENT);
                         break;
                     case "R":
-                        this.getImageView().setLayoutX(this.getImageView().getLayoutX() - 2);
+                        this.getImageView().setLayoutX(this.getImageView().getLayoutX() + SPRITE_MOVE_STEP_DECREMENT);
                         break;
                     case "L":
-                        this.getImageView().setLayoutX(this.getImageView().getLayoutX() + 2);
+                        this.getImageView().setLayoutX(this.getImageView().getLayoutX() + SPRITE_MOVE_STEP_INCREMENT);
                         break;
                 }
             }

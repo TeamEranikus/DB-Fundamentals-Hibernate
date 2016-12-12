@@ -1,4 +1,4 @@
-package escape.code.core;
+package escape.code.core.stageManager;
 
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

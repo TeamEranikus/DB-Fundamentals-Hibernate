@@ -3,7 +3,7 @@ package escape.code.core.engine;
 import com.google.inject.Inject;
 import escape.code.controllers.PuzzleController;
 import escape.code.core.ResizableCanvas;
-import escape.code.core.StageManager;
+import escape.code.core.stageManager.StageManager;
 import escape.code.core.TimeHandler;
 import escape.code.enums.Item;
 import escape.code.models.entities.Puzzle;

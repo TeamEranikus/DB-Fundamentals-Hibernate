@@ -1,4 +1,4 @@
-package escape.code.core;
+package escape.code.core.game;
 
 import escape.code.models.entities.User;
 import javafx.stage.Stage;

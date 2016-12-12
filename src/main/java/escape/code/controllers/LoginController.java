@@ -1,7 +1,7 @@
 package escape.code.controllers;
 
 import com.google.inject.Inject;
-import escape.code.core.Game;
+import escape.code.core.game.Game;
 import escape.code.models.entities.User;
 import escape.code.services.UserService;
 import javafx.event.ActionEvent;

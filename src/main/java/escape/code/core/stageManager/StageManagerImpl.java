@@ -1,4 +1,4 @@
-package escape.code.core;
+package escape.code.core.stageManager;
 
 import com.google.inject.Singleton;
 import escape.code.utils.Constants;

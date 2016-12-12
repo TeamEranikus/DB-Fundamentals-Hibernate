@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
         user.setPuzzleRectangle(this.puzzleRectangleService.getFirst());
         user.setCurrentTime(DEFAULT_START_LEVEL);
         user.setLevel(DEFAULT_START_LEVEL);
+        this.userDao.updateUser(user);
     }
 
     @Override

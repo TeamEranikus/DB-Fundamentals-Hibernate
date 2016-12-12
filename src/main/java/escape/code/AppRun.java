@@ -4,7 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import escape.code.configurations.InjectionModule;
 import escape.code.controllers.LoginController;
-import escape.code.core.Game;
+import escape.code.core.game.Game;
 import escape.code.enums.Level;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.PuzzleService;

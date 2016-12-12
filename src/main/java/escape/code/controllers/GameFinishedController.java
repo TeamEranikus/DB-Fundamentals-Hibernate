@@ -1,7 +1,7 @@
 package escape.code.controllers;
 
 import com.google.inject.Inject;
-import escape.code.core.StageManager;
+import escape.code.core.stageManager.StageManager;
 import escape.code.utils.Constants;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
