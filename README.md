@@ -2,6 +2,7 @@ Documentation
 for DB Fundamentals Hibernate course project Application: "EscapeCode"
 
 Developed by: 
+
 	Todor Ilchev 
 	
 	Elica Tasheva 
