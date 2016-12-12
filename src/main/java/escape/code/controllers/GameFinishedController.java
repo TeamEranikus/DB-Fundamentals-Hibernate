@@ -24,6 +24,6 @@ public class GameFinishedController {
      */
     public void backToMenu(ActionEvent event) {
         Stage currentStage = (Stage) this.backToGame.getScene().getWindow();
-        stageManager.loadSceneToPrimaryStage(currentStage, Constants.MENU_FXML_PATH);
+        stageManager.loadSceneToStage(currentStage, Constants.MENU_FXML_PATH);
     }
 }

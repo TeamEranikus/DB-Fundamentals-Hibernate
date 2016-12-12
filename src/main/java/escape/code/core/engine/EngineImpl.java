@@ -10,7 +10,7 @@ import escape.code.models.entities.Puzzle;
 import escape.code.models.entities.PuzzleRectangle;
 import escape.code.models.entities.Score;
 import escape.code.models.entities.User;
-import escape.code.models.sprite.Sprite;
+import escape.code.models.sprites.Sprite;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.UserService;
 import escape.code.utils.Constants;
@@ -46,7 +46,7 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
     private static final int PUZZLE_INCREMENTER = 1;
     private static final int DEFAULT_SPRITE_X_POSITION = 480;
     private static final int DEFAULT_SPRITE_Y_POSITION = 300;
-    private static final String TIME_LABEL_ID = "timeLabel"; // TODO make timer work
+    private static final String TIME_LABEL_ID = "timeLabel";
 
     private final PuzzleRectangleService puzzleRectangleService;
     private final UserService userService;
@@ -61,6 +61,7 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
     private Stage currentLoadedStage;
     private User user;
     private FXMLLoader loader;
+    private Timeline timer;
 
     /**
      * Set up the current scene engine
@@ -102,10 +103,10 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
             this.sprite.getImageView().setLayoutY(DEFAULT_SPRITE_Y_POSITION);
         }
 
-        if (currentPuzzle.isAnswerGiven()) {
+        if (currentPuzzle.isAnswerGiven()) { // TODO: related to not resetting user properly at end of game!
             this.currentPuzzleRectangle.setDisable(true);
             long puzzleRectangleId = this.user.getPuzzleRectangle().getId();
-            PuzzleRectangle puzzle = puzzleRectangleService.getOneById(puzzleRectangleId + PUZZLE_INCREMENTER);
+            PuzzleRectangle puzzle = this.puzzleRectangleService.getOneById(puzzleRectangleId + PUZZLE_INCREMENTER);
             this.user.setPuzzleRectangle(puzzle);
             this.currentPuzzleRectangle = this.getCurrentPuzzleRectangle();
             this.userService.updateUser(this.user);
@@ -116,10 +117,10 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
 
     @Override
     public void onTimeChanged(long timeInSecs) {
-        int hours = (int) (timeInSecs / 3600);
-        timeInSecs %= 3600;
-        int mins = (int) (timeInSecs / 60);
-        int secs = (int) (timeInSecs % 60);
+        int hours = (int) (timeInSecs / Constants.SECONDS_IN_HOUR);
+        timeInSecs %= Constants.SECONDS_IN_HOUR;
+        int mins = (int) (timeInSecs / Constants.SECONDS_IN_MINUTE);
+        int secs = (int) (timeInSecs % Constants.SECONDS_IN_MINUTE);
         String time = String.format("%02d:%02d:%02d", hours, mins, secs);
 
         this.user.setCurrentTime(timeInSecs);
@@ -148,8 +149,10 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
             event.consume();
             this.keys.put(event.getCode(), false);
         });
-        Timeline timer = this.setupTimer();
-        timer.play();
+        if (this.timer == null) {
+            this.timer = this.setupTimer();
+        }
+        this.timer.play();
     }
 
     private Timeline setupTimer() {
@@ -172,9 +175,9 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
                 Puzzle currentPuzzle = this.user.getPuzzleRectangle().getPuzzle();
                 PuzzleController.setPuzzle(currentPuzzle);
             }
-            this.stageManager.loadSceneToPrimaryStage(new Stage(), Constants.PUZZLE_FXML_PATH);
+            this.stageManager.loadSceneToStage(new Stage(), Constants.PUZZLE_FXML_PATH);
         } else if (currentPuzzleRectangleId.contains(END_GAME_RECTANGLE_ID)) {
-            if (this.user.getPuzzleRectangle().getId() == 12) {
+            if (this.user.getPuzzleRectangle().getId() == Constants.LAST_PUZZLE_ID) {
                 Score score = new Score();
                 score.setFinishTime(this.user.getCurrentTime());
                 score.setUser(this.user);
@@ -182,12 +185,12 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
                 this.userService.resetUser(this.user);
             }
             this.userService.updateUser(this.user);
-            this.stageManager.loadSceneToPrimaryStage(this.currentLoadedStage, Constants.GAME_FINISHED_FXML_PATH);
+            this.stageManager.loadSceneToStage(this.currentLoadedStage, Constants.GAME_FINISHED_FXML_PATH);
         } else {
             this.currentLoadedStage.close();
             PuzzleRectangle puzzle = this.user.getPuzzleRectangle();
             long puzzleId = puzzle.getId();
-            this.user.setPuzzleRectangle(puzzleRectangleService.getOneById(puzzleId + PUZZLE_INCREMENTER));
+            this.user.setPuzzleRectangle(this.puzzleRectangleService.getOneById(puzzleId + PUZZLE_INCREMENTER));
             throw new IllegalStateException(STOP_TIMER);
         }
     }
@@ -208,7 +211,9 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
     private Rectangle getCurrentPuzzleRectangle() {
         PuzzleRectangle puzzleRectangle = this.user.getPuzzleRectangle();
         Rectangle current = (Rectangle) this.objectsInCurrentScene.get(puzzleRectangle.getName());
-        current.setVisible(false);
+        if(current != null) {
+            current.setVisible(false);
+        }
         return current;
     }
 
@@ -221,7 +226,7 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
 
     private void updateItems() {
         List<PuzzleRectangle> allRectanglesForCurrentLevel =
-                puzzleRectangleService.getAllByLevel(this.user.getLevel());
+                this.puzzleRectangleService.getAllByLevel(this.user.getLevel());
         allRectanglesForCurrentLevel.stream()
                 .filter(rectangle -> rectangle.getId() < this.user.getPuzzleRectangle().getId())
                 .forEach(rectangle -> {

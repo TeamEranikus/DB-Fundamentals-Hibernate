@@ -6,6 +6,8 @@ import com.google.inject.Singleton;
 import escape.code.controllers.*;
 import escape.code.core.game.Game;
 import escape.code.core.game.GameImpl;
+import escape.code.core.parser.JSONParser;
+import escape.code.core.parser.JSONParserImpl;
 import escape.code.core.stageManager.StageManager;
 import escape.code.core.stageManager.StageManagerImpl;
 import escape.code.core.engine.Engine;
@@ -18,8 +20,8 @@ import escape.code.daos.impls.PuzzleDaoImpl;
 import escape.code.daos.impls.PuzzleRectangleDaoImpl;
 import escape.code.daos.impls.ScoreDaoImpl;
 import escape.code.daos.impls.UserDaoImpl;
-import escape.code.models.sprite.Sprite;
-import escape.code.models.sprite.SpriteImpl;
+import escape.code.models.sprites.Sprite;
+import escape.code.models.sprites.SpriteImpl;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.PuzzleService;
 import escape.code.services.ScoreService;
@@ -56,6 +58,7 @@ public class InjectionModule extends AbstractModule {
         this.bind(PuzzleRectangleService.class).to(PuzzleRectangleServiceImpl.class);
         this.bind(ScoreService.class).to(ScoreServiceImpl.class);
         this.bind(Sprite.class).to(SpriteImpl.class);
+        this.bind(JSONParser.class).to(JSONParserImpl.class);
 
         this.requestStaticInjection(LoginController.class);
         this.requestStaticInjection(MenuController.class);

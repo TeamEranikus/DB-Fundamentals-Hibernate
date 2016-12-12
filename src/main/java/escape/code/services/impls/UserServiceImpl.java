@@ -6,10 +6,9 @@ import escape.code.models.entities.PuzzleRectangle;
 import escape.code.models.entities.User;
 import escape.code.services.PuzzleRectangleService;
 import escape.code.services.UserService;
+import escape.code.utils.Constants;
 
 public class UserServiceImpl implements UserService {
-
-    private static final int DEFAULT_START_LEVEL = 0;
 
     private final UserDao userDao;
     private final PuzzleRectangleService puzzleRectangleService;
@@ -25,7 +24,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setName(username);
         user.setPassword(password);
-        user.setLevel(DEFAULT_START_LEVEL);
+        user.setLevel(Constants.DEFAULT_START_LEVEL);
         PuzzleRectangle puzzleRectangle = this.puzzleRectangleService.getFirst();
         user.setPuzzleRectangle(puzzleRectangle);
         this.userDao.create(user);
@@ -34,8 +33,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void resetUser(User user) {
         user.setPuzzleRectangle(this.puzzleRectangleService.getFirst());
-        user.setCurrentTime(DEFAULT_START_LEVEL);
-        user.setLevel(DEFAULT_START_LEVEL);
+        user.setCurrentTime(Constants.DEFAULT_START_TIME);
+        user.setLevel(Constants.DEFAULT_START_LEVEL);
         this.userDao.updateUser(user);
     }
 

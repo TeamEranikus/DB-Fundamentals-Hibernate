@@ -2,13 +2,14 @@ package escape.code.models.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Sets up puzzle rectangle database
  */
 @Entity
 @Table(name = "puzzles_rectangles")
-public class PuzzleRectangle {
+public class PuzzleRectangle implements Serializable {
 
     private Long id;
     private String name;

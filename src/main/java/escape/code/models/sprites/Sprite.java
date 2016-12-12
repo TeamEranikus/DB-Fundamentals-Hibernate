@@ -1,4 +1,4 @@
-package escape.code.models.sprite;
+package escape.code.models.sprites;
 
 import escape.code.core.ResizableCanvas;
 import javafx.scene.image.ImageView;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 public interface Sprite {
 
     /**
-     * Update sprite coordinates on movement
+     * Update sprites coordinates on movement
      *
      * @param keys          - pressed keys
      * @param rectCollision - level rectangle collisions
@@ -30,7 +30,7 @@ public interface Sprite {
     boolean checkForCol(Rectangle current);
 
     /**
-     * Gets sprite image view
+     * Gets sprites image view
      *
      * @return - image view
      */

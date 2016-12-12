@@ -1,5 +1,6 @@
 package escape.code.services;
 
+import escape.code.models.dtos.PuzzleDto;
 import escape.code.models.entities.Puzzle;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public interface PuzzleService {
     /**
      * Creates a new Puzzle and passes it for persistence to a DAO
      */
-    void createPuzzle(String... params);
+    void createPuzzle(PuzzleDto puzzleDto);
 
     /**
      * Retrieves all Puzzles by level trough a DAO

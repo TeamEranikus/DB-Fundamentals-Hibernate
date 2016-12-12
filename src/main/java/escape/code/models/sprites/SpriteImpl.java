@@ -1,4 +1,4 @@
-package escape.code.models.sprite;
+package escape.code.models.sprites;
 
 import escape.code.core.ResizableCanvas;
 import escape.code.utils.Constants;
@@ -64,7 +64,7 @@ public class SpriteImpl implements Sprite {
     }
 
     /**
-     * Moves sprite right or left and sets current sprite
+     * Moves sprites right or left and sets current sprites
      * to the corresponding one (right or left)
      *
      * @param x - moved direction: right if is more than zero or left if is less
@@ -88,7 +88,7 @@ public class SpriteImpl implements Sprite {
     }
 
     /**
-     * Moves sprite up or down
+     * Moves sprites up or down
      *
      * @param y - moved direction: down if is more than zero or up if is less
      */
@@ -118,7 +118,7 @@ public class SpriteImpl implements Sprite {
     }
 
     /**
-     * Check sprite position with level collision rectangles
+     * Check sprites position with level collision rectangles
      */
     private void checkBounds(String direction, ArrayList<Rectangle> rectCollision) {
         for (Rectangle rectangle : rectCollision) {

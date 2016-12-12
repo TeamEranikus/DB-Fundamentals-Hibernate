@@ -20,7 +20,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controls fxml file for the how to play scene
+ * Controls fxml file for the Ranking scene
  */
 public class ScoreboardController implements Initializable {
 
@@ -53,7 +53,7 @@ public class ScoreboardController implements Initializable {
      */
     public void backToMenu(ActionEvent event) throws IOException {
         Stage currentStage = (Stage) this.backToGame.getScene().getWindow();
-        stageManager.loadSceneToPrimaryStage(currentStage, Constants.MENU_FXML_PATH);
+        stageManager.loadSceneToStage(currentStage, Constants.MENU_FXML_PATH);
     }
 
     @Override

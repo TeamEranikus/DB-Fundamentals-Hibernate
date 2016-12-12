@@ -3,6 +3,9 @@ package escape.code.core;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+/**
+ * Created by Todor Ilchev on 2016-12-11.
+ */
 public class TimeHandler implements EventHandler<ActionEvent> {
 
     public interface Listener {

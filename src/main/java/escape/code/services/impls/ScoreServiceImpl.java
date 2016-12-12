@@ -7,6 +7,7 @@ import escape.code.models.entities.Score;
 import escape.code.models.entities.User;
 import escape.code.services.ScoreService;
 import escape.code.services.UserService;
+import escape.code.utils.Constants;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -57,10 +58,10 @@ public class ScoreServiceImpl implements ScoreService {
     private ScoreDto convertScoreToDto(Score score, int position) {
         ScoreDto scoreDto = new ScoreDto();
         long timeInSecs = score.getFinishTime();
-        int hours = (int) (timeInSecs / 3600);
-        timeInSecs %= 3600;
-        int mins = (int) (timeInSecs / 60);
-        int secs = (int) (timeInSecs % 60);
+        int hours = (int) (timeInSecs / Constants.SECONDS_IN_HOUR);
+        timeInSecs %= Constants.SECONDS_IN_HOUR;
+        int mins = (int) (timeInSecs / Constants.SECONDS_IN_MINUTE);
+        int secs = (int) (timeInSecs % Constants.SECONDS_IN_MINUTE);
         String time = String.format("%02d:%02d:%02d", hours, mins, secs);
         scoreDto.setTime(time);
         scoreDto.setUsername(score.getUser().getName());

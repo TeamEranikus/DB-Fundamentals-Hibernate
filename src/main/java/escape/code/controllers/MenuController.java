@@ -42,7 +42,7 @@ public class MenuController {
      */
     public void onHowToPlayClicked(ActionEvent event) throws IOException {
         this.currentStage = (Stage) this.howToPlayButton.getScene().getWindow();
-        stageManager.loadSceneToPrimaryStage(this.currentStage, Constants.HOW_TO_PLAY_FXML_PATH);
+        stageManager.loadSceneToStage(this.currentStage, Constants.HOW_TO_PLAY_FXML_PATH);
     }
 
     /**
@@ -56,6 +56,6 @@ public class MenuController {
 
     public void onRankingClicked(ActionEvent event) {
         this.currentStage = (Stage) this.howToPlayButton.getScene().getWindow();
-        stageManager.loadSceneToPrimaryStage(this.currentStage, Constants.RANKING_FXML_PATH);
+        stageManager.loadSceneToStage(this.currentStage, Constants.RANKING_FXML_PATH);
     }
 }

@@ -1,5 +1,6 @@
 package escape.code.services;
 
+import escape.code.models.dtos.PuzzleRectangleDto;
 import escape.code.models.entities.PuzzleRectangle;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface PuzzleRectangleService {
     /**
      * Creates a new PuzzleRectangle and passes it for persistence to a DAO
      */
-    void createPuzzleRectangle(String... params);
+    void createPuzzleRectangle(PuzzleRectangleDto puzzleRectangleDto);
 
     /**
      * Retrieves the first fount PuzzleRectangle trough a DAO

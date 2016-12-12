@@ -49,7 +49,7 @@ public class GameImpl implements Game {
      */
     public void initialize(Stage stage) {
         this.currentStage = stage;
-        login();
+        this.login();
     }
 
     /**
@@ -59,7 +59,8 @@ public class GameImpl implements Game {
      * Set up animation timer
      */
     public void run() {
-        this.fxmlLoader = this.stageManager.loadSceneToPrimaryStage(this.currentStage, Level.getByNum(this.user.getLevel()).getPath());
+        this.fxmlLoader = this.stageManager
+                .loadSceneToStage(this.currentStage, Level.getByNum(this.user.getLevel()).getPath());
         this.engine.setLoader(this.fxmlLoader);
         this.engine.setUser(this.user);
         this.engine.initialize();
@@ -68,24 +69,25 @@ public class GameImpl implements Game {
             @Override
             public void handle(long now) {
                 try {
-                    engine.play();
+                    GameImpl.this.engine.play();
                 } catch (IllegalStateException e) {
-                    mediaPlayer.stop();
-                    user.setLevel((user.getLevel() + LEVEL_INCREMENTER) % NUMBER_OF_LEVELS);
-                    fxmlLoader = stageManager.loadSceneToPrimaryStage(currentStage, Level.getByNum(user.getLevel())
+                    GameImpl.this.mediaPlayer.stop();
+                    GameImpl.this.user.setLevel((GameImpl.this.user.getLevel() + LEVEL_INCREMENTER) % NUMBER_OF_LEVELS);
+                    GameImpl.this.fxmlLoader = GameImpl.this.stageManager
+                            .loadSceneToStage(GameImpl.this.currentStage, Level.getByNum(GameImpl.this.user.getLevel())
                             .getPath());
-                    userService.updateUser(user);
-                    engine.setLoader(fxmlLoader);
-                    engine.setUser(user);
-                    engine.initialize();
-                    mediaPlayer.play();
+                    GameImpl.this.userService.updateUser(GameImpl.this.user);
+                    GameImpl.this.engine.setLoader(GameImpl.this.fxmlLoader);
+                    GameImpl.this.engine.setUser(GameImpl.this.user);
+                    GameImpl.this.engine.initialize();
+                    GameImpl.this.mediaPlayer.play();
                 } catch (NullPointerException ex) {
                     ex.printStackTrace();
-                    timeline.stop();
+                    GameImpl.this.timeline.stop();
                 }
             }
         };
-        timeline.start();
+        this.timeline.start();
     }
 
     /**
@@ -101,14 +103,14 @@ public class GameImpl implements Game {
      * Loads game menu stage
      */
     public void loadMainMenu() {
-        this.fxmlLoader = this.stageManager.loadSceneToPrimaryStage(this.currentStage, Constants.MENU_FXML_PATH);
+        this.fxmlLoader = this.stageManager.loadSceneToStage(this.currentStage, Constants.MENU_FXML_PATH);
     }
 
     /**
      * Loads game login stage
      */
     private void login() {
-       this.fxmlLoader = this.stageManager.loadSceneToPrimaryStage(this.currentStage, Constants.LOGIN_FXML_PATH);
+       this.fxmlLoader = this.stageManager.loadSceneToStage(this.currentStage, Constants.LOGIN_FXML_PATH);
     }
 
     /**

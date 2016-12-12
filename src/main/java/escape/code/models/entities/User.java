@@ -75,7 +75,6 @@ public class User implements Serializable {
     }
 
     @Basic
-//    @Column(name = "current_time", columnDefinition = "bigint default '0'")
     public long getCurrentTime() {
         return this.currentTime;
     }

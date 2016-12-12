@@ -1,0 +1,110 @@
+[
+	{
+		"question": "-What the following code will print?",
+		"correctAnswer": "piano",
+		"hint": "Do you really need the numbers?",
+		"nextClue": "What could it be??",
+		"imagePath": "/pictures/ComputerTaskWhite.png",
+		"level": 0,
+		"item": "NONE"
+	},
+	{
+		"question": "-One piano button is stuck!",
+		"correctAnswer": "13",
+		"hint": "How will you EXit?",
+		"nextClue": "You are one step away from the exit.",
+		"imagePath": "/pictures/PianoTask.jpg",
+		"level": 0,
+		"item": "BOOK"
+	},
+	{
+		"question": "-The way to unlock the door is to know the secret number.",
+		"correctAnswer": "111",
+		"hint": "Do you see something unusual?",
+		"nextClue": "The door is open now.",
+		"imagePath": "/pictures/LibraryWithJoker.jpg",
+		"level": 0,
+		"item": "KEY"
+	},
+	{
+		"question": "Success pass the level",
+		"correctAnswer": "",
+		"hint": "Success pass the level",
+		"nextClue": "",
+		"imagePath": "/pictures/LibraryWithJoker.jpg",
+		"level": 0,
+		"item": "NONE"
+	},
+	{
+		"question": "-Does the chessboard reminds you of something?",
+		"correctAnswer": "matrix",
+		"hint": "[][]",
+		"nextClue": "Oh, look it's currently playing!",
+		"imagePath": "/pictures/ChessBoard.jpg",
+		"level": 1,
+		"item": "NONE"
+	},
+	{
+		"question": "",
+		"correctAnswer": "coffee",
+		"hint": "It's hot",
+		"nextClue": "What could it be??",
+		"imagePath": "/pictures/TvPuzzle.png",
+		"level": 1,
+		"item": "BOOK"
+	},
+	{
+		"question": "Who collects the garbage?",
+		"correctAnswer": "garbage collector",
+		"hint": "Be like Java!! Collect your own garbage.",
+		"nextClue": "The second door is open now.",
+		"imagePath": "/pictures/Bin.png",
+		"level": 1,
+		"item": "KEY"
+	},
+	{
+		"question": "Success pass the level",
+		"correctAnswer": "",
+		"hint": "",
+		"nextClue": "",
+		"imagePath": "/pictures/LibraryWithJoker.jpg",
+		"level": 1,
+		"item": "NONE"
+	},
+	{
+		"question": "-Does this reminds you of something?",
+		"correctAnswer": "binary tree",
+		"hint": "The elements are ordered using their natural ordering.",
+		"nextClue": "You get one unknown item. Try figure it out what is it.",
+		"imagePath": "/pictures/TabletTask.png",
+		"level": 2,
+		"item": "NONE"
+	},
+	{
+		"question": "-What is the equivalent of experimenting with test-tubes\n in programming?",
+		"correctAnswer": "unit testing",
+		"hint": "You should check if everything works fine with your code. What will you do?",
+		"nextClue": "Now put the test-tupe in the microscope",
+		"imagePath": "/pictures/TestingTask.jpg",
+		"level": 2,
+		"item": "BOOK"
+	},
+	{
+		"question": "-All number must be even.",
+		"correctAnswer": "4812",
+		"hint": "All numbers are divisible by 4.",
+		"nextClue": "It seems like there is no door.Try to put the key somewhere else and escape \nfrom the mystery place forever.",
+		"imagePath": "/pictures/MicroscopeTask.png",
+		"level": 2,
+		"item": "KEY"
+	},
+	{
+		"question": "Success finished the game",
+		"correctAnswer": "",
+		"hint": "",
+		"nextClue": "",
+		"imagePath": "/pictures/LibraryWithJoker.jpg",
+		"level": 2,
+		"item": "NONE"
+	}
+]

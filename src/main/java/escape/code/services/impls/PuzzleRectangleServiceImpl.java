@@ -2,6 +2,7 @@ package escape.code.services.impls;
 
 import com.google.inject.Inject;
 import escape.code.daos.PuzzleRectangleDao;
+import escape.code.models.dtos.PuzzleRectangleDto;
 import escape.code.models.entities.Puzzle;
 import escape.code.models.entities.PuzzleRectangle;
 import escape.code.services.PuzzleRectangleService;
@@ -10,10 +11,6 @@ import escape.code.services.PuzzleService;
 import java.util.List;
 
 public class PuzzleRectangleServiceImpl implements PuzzleRectangleService {
-
-    private static final int PUZZLE_RECTANGLE_NAME_INDEX = 0;
-    private static final int PUZZLE_RECTANGLE_LEVEL_INDEX = 1;
-    private static final int PUZZLE_RECTANGLE_CORRESPONDING_PUZZLE_INDEX = 2;
 
     private final PuzzleRectangleDao puzzleRectangleDao;
     private final PuzzleService puzzleService;
@@ -25,12 +22,11 @@ public class PuzzleRectangleServiceImpl implements PuzzleRectangleService {
     }
 
     @Override
-    public void createPuzzleRectangle(String... params) {
+    public void createPuzzleRectangle(PuzzleRectangleDto puzzleRectangleDto) {
         PuzzleRectangle puzzleRectangle = new PuzzleRectangle();
-        puzzleRectangle.setName(params[PUZZLE_RECTANGLE_NAME_INDEX]);
-        puzzleRectangle.setLevel(Integer.parseInt(params[PUZZLE_RECTANGLE_LEVEL_INDEX]));
-        Puzzle puzzle = this.puzzleService
-                .getOneById(Long.parseLong(params[PUZZLE_RECTANGLE_CORRESPONDING_PUZZLE_INDEX]));
+        puzzleRectangle.setName(puzzleRectangleDto.getName());
+        puzzleRectangle.setLevel(puzzleRectangleDto.getLevel());
+        Puzzle puzzle = this.puzzleService.getOneById(puzzleRectangleDto.getPuzzleId());
         puzzleRectangle.setPuzzle(puzzle);
         this.puzzleRectangleDao.createPuzzleRectangle(puzzleRectangle);
     }

@@ -1,0 +1,62 @@
+[
+	{
+		"name": "computer",
+		"level": 0,
+		"puzzleId": 1
+	},
+	{
+		"name": "piano",
+		"level": 0,
+		"puzzleId": 2
+	},
+	{
+		"name": "library",
+		"level": 0,
+		"puzzleId": 3
+	},
+	{
+		"name": "door",
+		"level": 0,
+		"puzzleId": 4
+	},
+	{
+		"name": "chess",
+		"level": 1,
+		"puzzleId": 5
+	},
+	{
+		"name": "tv",
+		"level": 1,
+		"puzzleId": 6
+	},
+	{
+		"name": "kitchen",
+		"level": 1,
+		"puzzleId": 7
+	},
+	{
+		"name": "door",
+		"level": 1,
+		"puzzleId": 8
+	},
+	{
+		"name": "tablet",
+		"level": 2,
+		"puzzleId": 9
+	},
+	{
+		"name": "testing",
+		"level": 2,
+		"puzzleId": 10
+	},
+	{
+		"name": "microscope",
+		"level": 2,
+		"puzzleId": 11
+	},
+	{
+		"name": "exit",
+		"level": 2,
+		"puzzleId": 12
+	}
+]

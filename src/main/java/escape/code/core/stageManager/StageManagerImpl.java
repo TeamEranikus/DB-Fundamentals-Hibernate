@@ -24,7 +24,7 @@ public class StageManagerImpl implements StageManager {
      * @param fxmlPath     - next scene fxml path
      * @return fxml loader with next scene game objects
      */
-    public FXMLLoader loadSceneToPrimaryStage(Stage currentStage, String fxmlPath) {
+    public FXMLLoader loadSceneToStage(Stage currentStage, String fxmlPath) {
         FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource(fxmlPath));
         try {
             Region region = fxmlLoader.load();
