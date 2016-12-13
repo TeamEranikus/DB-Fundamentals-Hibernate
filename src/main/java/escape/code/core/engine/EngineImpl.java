@@ -106,8 +106,10 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
         if (currentPuzzle.isAnswerGiven()) {
             this.currentPuzzleRectangle.setDisable(true);
             long puzzleRectangleId = this.user.getPuzzleRectangle().getId();
-            PuzzleRectangle puzzle = this.puzzleRectangleService.getOneById(puzzleRectangleId + PUZZLE_INCREMENTER);
-            this.user.setPuzzleRectangle(puzzle);
+            if (this.user.getCurrentTime() != Constants.DEFAULT_START_TIME) {
+                PuzzleRectangle puzzle = this.puzzleRectangleService.getOneById(puzzleRectangleId + PUZZLE_INCREMENTER);
+                this.user.setPuzzleRectangle(puzzle);
+            }
             this.currentPuzzleRectangle = this.getCurrentPuzzleRectangle();
             this.userService.updateUser(this.user);
             this.hasToSetPuzzle = true;

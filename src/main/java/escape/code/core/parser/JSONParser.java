@@ -1,6 +1,9 @@
 package escape.code.core.parser;
 
-
+/**
+ * Keeps the logic for parsing JSON
+ *
+ */
 public interface JSONParser {
 
     /**

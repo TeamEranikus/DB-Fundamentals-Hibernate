@@ -12,6 +12,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  * Controls the fxml file for the login scene
  */
@@ -39,7 +42,7 @@ public class LoginController {
      */
     public void login(ActionEvent actionEvent) {
         String username = this.usernameField.getText();
-        String password = this.passwordField.getText();
+        String password = this.encryptPassword(this.passwordField.getText());
         try {
             this.checkForEmptyString(username, password);
             User user = userService.getUser(username, password);
@@ -57,7 +60,7 @@ public class LoginController {
      */
     public void register(ActionEvent actionEvent) {
         String username = this.usernameField.getText();
-        String password = this.passwordField.getText();
+        String password = this.encryptPassword(this.passwordField.getText());
         try {
             this.checkForEmptyString(username, password);
             userService.createUser(username, password);
@@ -65,6 +68,24 @@ public class LoginController {
         } catch (IllegalArgumentException exception) {
             this.messageLabel.setText(exception.getMessage());
         }
+    }
+
+    private String encryptPassword(String passwordToHash) {
+        String generatedPassword = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(passwordToHash.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for (int i=0; i< bytes.length ;i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return generatedPassword;
     }
 
     /**
