@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import escape.code.core.game.Game;
 import escape.code.models.entities.User;
 import escape.code.services.UserService;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -86,6 +87,7 @@ public class LoginController {
     public void onQuitClicked(ActionEvent actionEvent) {
         Stage currentStage = (Stage) this.usernameField.getScene().getWindow();
         currentStage.close();
+        Platform.exit();
         System.exit(0);
     }
 }

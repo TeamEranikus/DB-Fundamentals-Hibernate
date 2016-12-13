@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import escape.code.core.game.Game;
 import escape.code.core.stageManager.StageManager;
 import escape.code.utils.Constants;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,6 +52,7 @@ public class MenuController {
     public void onQuitClicked(ActionEvent event) {
         this.currentStage = (Stage) this.quitButton.getScene().getWindow();
         this.currentStage.close();
+        Platform.exit();
         System.exit(0);
     }
 

@@ -71,23 +71,26 @@ public class GameImpl implements Game {
                 try {
                     GameImpl.this.engine.play();
                 } catch (IllegalStateException e) {
-                    GameImpl.this.mediaPlayer.stop();
-                    GameImpl.this.user.setLevel((GameImpl.this.user.getLevel() + LEVEL_INCREMENTER) % NUMBER_OF_LEVELS);
-                    GameImpl.this.fxmlLoader = GameImpl.this.stageManager
-                            .loadSceneToStage(GameImpl.this.currentStage, Level.getByNum(GameImpl.this.user.getLevel())
-                            .getPath());
-                    GameImpl.this.userService.updateUser(GameImpl.this.user);
-                    GameImpl.this.engine.setLoader(GameImpl.this.fxmlLoader);
-                    GameImpl.this.engine.setUser(GameImpl.this.user);
-                    GameImpl.this.engine.initialize();
-                    GameImpl.this.mediaPlayer.play();
+                    GameImpl.this.gameProcessInitialize();
                 } catch (NullPointerException ex) {
-                    ex.printStackTrace();
                     GameImpl.this.timeline.stop();
                 }
             }
         };
         this.timeline.start();
+    }
+
+    private void gameProcessInitialize() {
+        GameImpl.this.mediaPlayer.stop();
+        GameImpl.this.user.setLevel((GameImpl.this.user.getLevel() + LEVEL_INCREMENTER) % NUMBER_OF_LEVELS);
+        GameImpl.this.fxmlLoader = GameImpl.this.stageManager
+                .loadSceneToStage(GameImpl.this.currentStage, Level.getByNum(GameImpl.this.user.getLevel())
+                .getPath());
+        GameImpl.this.userService.updateUser(GameImpl.this.user);
+        GameImpl.this.engine.setLoader(GameImpl.this.fxmlLoader);
+        GameImpl.this.engine.setUser(GameImpl.this.user);
+        GameImpl.this.engine.initialize();
+        GameImpl.this.mediaPlayer.play();
     }
 
     /**

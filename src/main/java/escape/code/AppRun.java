@@ -53,22 +53,26 @@ public class AppRun extends Application {
     private void seedData(Injector injector) {
         PuzzleService puzzleService = injector.getInstance(PuzzleService.class);
         PuzzleRectangleService puzzleRectangleService = injector.getInstance(PuzzleRectangleService.class);
-        boolean shoudlSkipSeed = !this.isFirstRun(puzzleService, puzzleRectangleService);
-        if (shoudlSkipSeed) {
+        boolean shouldSkipSeed = !this.isFirstRun(puzzleService, puzzleRectangleService);
+        if (shouldSkipSeed) {
             return;
         }
         JSONParser jsonParser = injector.getInstance(JSONParser.class);
+
         PuzzleDto[] puzzles = jsonParser
                 .read(PuzzleDto[].class, Constants.PATH_TO_PUZZLES_JSON);
+
         Arrays.stream(puzzles).forEach(puzzleService::createPuzzle);
+
         PuzzleRectangleDto[] rectangles = jsonParser
                 .read(PuzzleRectangleDto[].class, Constants.PATH_TO_PUZZLE_RECTANGLES_JSON);
+
         Arrays.stream(rectangles).forEach(puzzleRectangleService::createPuzzleRectangle);
     }
 
+    @SuppressWarnings("unchecked")
     private boolean isFirstRun(PuzzleService puzzleService, PuzzleRectangleService puzzleRectangleService) {
-        boolean result = puzzleService.getAllByLevel(Level.ZERO.ordinal()).size() == 0 &&
+        return puzzleService.getAllByLevel(Level.ZERO.ordinal()).size() == 0 &&
                 puzzleRectangleService.getAllByLevel(Level.ZERO.ordinal()).size() == 0;
-        return result;
     }
 }
