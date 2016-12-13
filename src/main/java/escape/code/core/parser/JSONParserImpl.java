@@ -9,11 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-/**
- * Created by Todor Ilchev on 2016-11-19.
- */
-
-
 public class JSONParserImpl implements JSONParser {
 
     private Gson gson;

@@ -13,7 +13,7 @@
             <Image url="@../pictures/GameFinished.png" />
          </image>
       </ImageView>
-      <Button fx:id="backToGame" layoutX="139.0" layoutY="528.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="82.0" prefWidth="300.0" style="-fx-background-color: #e5f495;" text="Back to Menu">
+      <Button fx:id="quit" layoutX="139.0" layoutY="528.0" mnemonicParsing="false" onAction="#quit" prefHeight="82.0" prefWidth="300.0" style="-fx-background-color: #e5f495;" text="QUIT">
          <font>
             <Font size="39.0" />
          </font>

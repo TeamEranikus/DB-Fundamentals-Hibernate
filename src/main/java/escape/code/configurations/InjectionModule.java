@@ -4,6 +4,8 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import escape.code.controllers.*;
+import escape.code.core.animationTimer.GameRender;
+import escape.code.core.animationTimer.GameTimer;
 import escape.code.core.game.Game;
 import escape.code.core.game.GameImpl;
 import escape.code.core.parser.JSONParser;
@@ -59,6 +61,7 @@ public class InjectionModule extends AbstractModule {
         this.bind(ScoreService.class).to(ScoreServiceImpl.class);
         this.bind(Sprite.class).to(SpriteImpl.class);
         this.bind(JSONParser.class).to(JSONParserImpl.class);
+        this.bind(GameRender.class).to(GameTimer.class);
 
         this.requestStaticInjection(LoginController.class);
         this.requestStaticInjection(MenuController.class);

@@ -1,12 +1,6 @@
 package escape.code.core.parser;
 
-/**
- * Created by Todor Ilchev on 2016-11-19.
- */
 
-/**
- *
- */
 public interface JSONParser {
 
     /**

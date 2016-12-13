@@ -103,7 +103,7 @@ public class EngineImpl implements Engine, TimeHandler.Listener {
             this.sprite.getImageView().setLayoutY(DEFAULT_SPRITE_Y_POSITION);
         }
 
-        if (currentPuzzle.isAnswerGiven()) { // TODO: related to not resetting user properly at end of game!
+        if (currentPuzzle.isAnswerGiven()) {
             this.currentPuzzleRectangle.setDisable(true);
             long puzzleRectangleId = this.user.getPuzzleRectangle().getId();
             PuzzleRectangle puzzle = this.puzzleRectangleService.getOneById(puzzleRectangleId + PUZZLE_INCREMENTER);

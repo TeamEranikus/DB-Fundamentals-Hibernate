@@ -2,13 +2,13 @@ package escape.code.core.game;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import escape.code.core.stageManager.StageManager;
+import escape.code.core.animationTimer.GameRender;
 import escape.code.core.engine.Engine;
+import escape.code.core.stageManager.StageManager;
 import escape.code.enums.Level;
 import escape.code.models.entities.User;
 import escape.code.services.UserService;
 import escape.code.utils.Constants;
-import javafx.animation.AnimationTimer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -20,7 +20,7 @@ import java.io.File;
  * Keeps the main logic for running the game
  */
 @Singleton
-public class GameImpl implements Game {
+public class GameImpl implements Game, GameRender.Listener {
 
     private static final int LEVEL_INCREMENTER = 1;
     private static final int NUMBER_OF_LEVELS = Level.values().length;
@@ -28,18 +28,19 @@ public class GameImpl implements Game {
     private StageManager stageManager;
     private UserService userService;
     private Engine engine;
+    private final GameRender timeline;
 
     private User user;
-    private AnimationTimer timeline;
     private Stage currentStage;
     private MediaPlayer mediaPlayer;
     private FXMLLoader fxmlLoader;
 
     @Inject
-    public GameImpl(StageManager stageManager, UserService userService, Engine engine) {
+    public GameImpl(StageManager stageManager, UserService userService, Engine engine, GameRender timeline) {
         this.stageManager = stageManager;
         this.userService = userService;
         this.engine = engine;
+        this.timeline = timeline;
     }
 
     /**
@@ -65,18 +66,7 @@ public class GameImpl implements Game {
         this.engine.setUser(this.user);
         this.engine.initialize();
         this.playAudio();
-        this.timeline = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                try {
-                    GameImpl.this.engine.play();
-                } catch (IllegalStateException e) {
-                    GameImpl.this.gameProcessInitialize();
-                } catch (NullPointerException ex) {
-                    GameImpl.this.timeline.stop();
-                }
-            }
-        };
+        this.timeline.setListener(this);
         this.timeline.start();
     }
 
@@ -125,5 +115,16 @@ public class GameImpl implements Game {
         Media media = new Media(mediaUrl);
         this.mediaPlayer = new MediaPlayer(media);
         this.mediaPlayer.play();
+    }
+
+    @Override
+    public void onHandle(long now) {
+        try {
+            this.engine.play();
+        } catch (IllegalStateException e) {
+            this.gameProcessInitialize();
+        } catch (NullPointerException ex) {
+            this.timeline.stop();
+        }
     }
 }

@@ -2,7 +2,7 @@ package escape.code.controllers;
 
 import com.google.inject.Inject;
 import escape.code.core.stageManager.StageManager;
-import escape.code.utils.Constants;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class GameFinishedController {
 
     @FXML
-    private Button backToGame;
+    private Button quit;
 
     @Inject
     private static StageManager stageManager;
@@ -22,8 +22,10 @@ public class GameFinishedController {
     /**
      * Returns the scene to the main menu
      */
-    public void backToMenu(ActionEvent event) {
-        Stage currentStage = (Stage) this.backToGame.getScene().getWindow();
-        stageManager.loadSceneToStage(currentStage, Constants.MENU_FXML_PATH);
+    public void quit(ActionEvent event) {
+        Stage currentStage = (Stage) this.quit.getScene().getWindow();
+        currentStage.close();
+        Platform.exit();
+        System.exit(0);
     }
 }
